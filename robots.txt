@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /b2b.html
+Sitemap: https://moablunchbox.com/sitemap.xml
