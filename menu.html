@@ -23,28 +23,41 @@
             theme: {
                 extend: {
                     colors: {
-                        /* Remapped to "The Lunchbox" brand (sign: red/black/steel) */
-                        auburn: '#C8362B',
-                        'desert-blue': '#5A5E63',
-                        cream: '#E6E7E9',
-                        sunset: '#C8362B',
+                        /* The Lunchbox Design System tokens (legacy class names remapped) */
+                        auburn: '#e01f26',
+                        'desert-blue': '#5f656b',
+                        cream: '#e7e9ec',
+                        sunset: '#e01f26',
                         'coyote-yellow': '#EBCB6B',
-                        'night-rock': '#1A1A1A',
-                        'clean-white': '#F7F5F1',
-                        'lb-red':'#C8362B','lb-red-dark':'#9E2820','lb-ink':'#1A1A1A',
+                        'night-rock': '#100c0b',
+                        'clean-white': '#ffffff',
+                        'lb-red':'#e01f26','lb-red-dark':'#c4161c','lb-ink':'#100c0b','lb-cream':'#f6f1e7','lb-go':'#2f8f4e',
                     },
                     fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        body: ['Open Sans', 'sans-serif'],
+                        display: ['Anton', 'sans-serif'],
+                        heading: ['Archivo', 'system-ui', 'sans-serif'],
+                        body: ['Archivo', 'system-ui', 'sans-serif'],
+                        mono: ['Spline Sans Mono', 'monospace'],
                     },
                 },
             },
         }
     </script>
+    <style>
+        /* The Lunchbox Design System — signature treatments */
+        body{ font-family:'Archivo',system-ui,sans-serif; }
+        h1,h2,.t-display{ font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:-0.01em; }
+        header nav > a:first-child{ font-family:'Anton',sans-serif; font-weight:400; letter-spacing:0; }
+        .bg-clean-white.rounded-xl,.bg-clean-white.rounded-lg,.bg-white.rounded-xl,.bg-white.rounded-lg{ border:3px solid #000 !important; box-shadow:5px 5px 0 #000; }
+        a.bg-sunset,a.bg-auburn,a.bg-lb-red,a.bg-night-rock,a.bg-lb-ink{ border:3px solid #000 !important; box-shadow:4px 4px 0 #000; transition:transform .12s cubic-bezier(.2,.8,.2,1),box-shadow .12s; }
+        a.bg-sunset:hover,a.bg-auburn:hover,a.bg-lb-red:hover,a.bg-night-rock:hover,a.bg-lb-ink:hover{ transform:translate(-1px,-1px); box-shadow:6px 6px 0 #000; }
+        a.bg-sunset:active,a.bg-auburn:active,a.bg-lb-red:active,a.bg-night-rock:active,a.bg-lb-ink:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 #000; }
+        [data-price-value]{ font-family:'Spline Sans Mono',monospace !important; }
+    </style>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- GTM -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXX"></script>
@@ -77,7 +90,7 @@
     }
     </script>
 </head>
-<body class="font-body bg-clean-white text-night-rock antialiased">
+<body class="font-body bg-lb-cream text-night-rock antialiased">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-sunset focus:text-clean-white focus:px-4 focus:py-2">
         Skip to main content
     </a>

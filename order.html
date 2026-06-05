@@ -14,13 +14,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { theme: { extend: {
-            colors: { 'lb-red':'#C8362B','lb-red-dark':'#9E2820','lb-ink':'#1A1A1A','lb-steel':'#8A8D91','lb-steel-2':'#5A5E63','lb-light':'#E6E7E9','lb-cream':'#F7F5F1' },
-            fontFamily: { heading:['Montserrat','sans-serif'], body:['Open Sans','sans-serif'] },
+            colors: { 'lb-red':'#e01f26','lb-red-dark':'#c4161c','lb-red-700':'#9c1116','lb-ink':'#100c0b','lb-ink-800':'#1b1614','lb-steel':'#8b9197','lb-steel-2':'#5f656b','lb-light':'#e7e9ec','lb-cream':'#f6f1e7','lb-go':'#2f8f4e' },
+            fontFamily: { display:['Anton','sans-serif'], heading:['Archivo','system-ui','sans-serif'], body:['Archivo','system-ui','sans-serif'], mono:['Spline Sans Mono','monospace'] },
         }}}
     </script>
+    <style>
+        /* The Lunchbox Design System — signature treatments (red/black/paper, keylines, hard shadows) */
+        body{ font-family:'Archivo',system-ui,sans-serif; }
+        h1,h2,.t-display{ font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:-0.01em; }
+        header nav > a:first-child{ font-family:'Anton',sans-serif; font-weight:400; letter-spacing:0; }
+        .bg-white.rounded-xl,.bg-white.rounded-lg,.bg-white.rounded-2xl,.bg-clean-white.rounded-xl,.bg-clean-white.rounded-lg{ border:3px solid #000 !important; box-shadow:5px 5px 0 #000; }
+        a.bg-lb-red,button.bg-lb-red,a.bg-lb-ink,button.bg-lb-ink,a.bg-white.border-2,button.bg-white.border-2{ border:3px solid #000 !important; box-shadow:4px 4px 0 #000; transition:transform .12s cubic-bezier(.2,.8,.2,1),box-shadow .12s; }
+        a.bg-lb-red:hover,button.bg-lb-red:hover,a.bg-lb-ink:hover,button.bg-lb-ink:hover{ transform:translate(-1px,-1px); box-shadow:6px 6px 0 #000; }
+        a.bg-lb-red:active,button.bg-lb-red:active,a.bg-lb-ink:active,button.bg-lb-ink:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 #000; }
+        [data-price-value],[data-price],#total,#subtotal,#tax,#boxTotal,#boxTotalMobile,#totalMobile{ font-family:'Spline Sans Mono',monospace !important; }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="font-body bg-lb-cream text-lb-ink antialiased">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-lb-red focus:text-white focus:px-4 focus:py-2">Skip to main content</a>
