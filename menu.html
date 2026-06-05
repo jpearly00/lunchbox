@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="Sandwiches, burritos, picnic combos. Browse and order ahead.">
     <link rel="canonical" href="https://moablunchbox.com/menu.html">
 
-    <title>Menu | Moab Lunchbox — Order-Ahead Food in Moab, UT</title>
+    <title>Menu | The Lunchbox — Order-Ahead Food in Moab, UT</title>
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,13 +23,15 @@
             theme: {
                 extend: {
                     colors: {
-                        auburn: '#8C4028',
-                        'desert-blue': '#6094A8',
-                        cream: '#DED6C5',
-                        sunset: '#E08D63',
+                        /* Remapped to "The Lunchbox" brand (sign: red/black/steel) */
+                        auburn: '#C8362B',
+                        'desert-blue': '#5A5E63',
+                        cream: '#E6E7E9',
+                        sunset: '#C8362B',
                         'coyote-yellow': '#EBCB6B',
-                        'night-rock': '#2C1810',
-                        'clean-white': '#FAFAF8',
+                        'night-rock': '#1A1A1A',
+                        'clean-white': '#F7F5F1',
+                        'lb-red':'#C8362B','lb-red-dark':'#9E2820','lb-ink':'#1A1A1A',
                     },
                     fontFamily: {
                         heading: ['Montserrat', 'sans-serif'],
@@ -81,32 +83,36 @@
     </a>
 
     <!-- HEADER -->
-    <header class="sticky top-0 z-40 bg-clean-white/95 backdrop-blur border-b border-cream shadow-sm">
+    <header class="sticky top-0 z-40 bg-lb-ink text-clean-white border-b-4 border-lb-red shadow-md">
         <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="/" class="font-heading font-bold text-xl text-auburn">Moab Lunchbox</a>
+            <a href="/" class="font-heading font-black text-xl uppercase tracking-tight text-clean-white">The <span class="text-lb-red">Lunchbox</span></a>
 
-            <ul class="hidden md:flex gap-6 items-center font-heading text-sm font-semibold uppercase tracking-wide">
-                <li><a href="/" class="text-night-rock hover:text-sunset transition">Home</a></li>
-                <li><a href="menu.html" class="text-sunset border-b-2 border-sunset pb-1">Menu</a></li>
-                <li><a href="https://moabcoyote.com" class="text-night-rock hover:text-sunset transition">Coyote's Store</a></li>
+            <ul class="hidden md:flex gap-6 items-center font-heading text-sm font-bold uppercase tracking-wide">
+                <li><a href="/" class="text-clean-white hover:text-lb-red transition">Home</a></li>
+                <li><a href="menu.html" class="text-lb-red border-b-2 border-lb-red pb-1">Menu</a></li>
+                <li><a href="build.html" class="text-clean-white hover:text-lb-red transition">Build a Box</a></li>
+                <li><a href="order.html" class="text-clean-white hover:text-lb-red transition">Order</a></li>
+                <li><a href="https://moabcoyote.com" class="text-clean-white hover:text-lb-red transition">Coyote's</a></li>
             </ul>
 
-            <a href="tel:+14352636669" class="hidden md:inline-block bg-sunset hover:bg-auburn text-clean-white font-heading font-bold uppercase tracking-wide px-5 py-2 rounded-lg shadow hover:shadow-lg transition-all text-sm">
-                Call to Order
+            <a href="order.html" class="hidden md:inline-block bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide px-5 py-2 rounded-lg shadow hover:shadow-lg transition-all text-sm">
+                Start Order
             </a>
 
-            <button id="mobile-menu-toggle" class="md:hidden p-2 rounded hover:bg-cream transition" aria-label="Toggle menu" aria-expanded="false">
-                <svg class="w-6 h-6 text-night-rock" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="mobile-menu-toggle" class="md:hidden p-2 rounded hover:bg-white/10 transition" aria-label="Toggle menu" aria-expanded="false">
+                <svg class="w-6 h-6 text-clean-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </nav>
 
-        <div id="mobile-menu" class="md:hidden hidden bg-clean-white border-t border-cream" aria-hidden="true">
-            <ul class="flex flex-col gap-1 p-4 font-heading text-sm font-semibold uppercase tracking-wide">
-                <li><a href="/" class="block py-2 text-night-rock hover:text-sunset transition">Home</a></li>
-                <li><a href="menu.html" class="block py-2 text-sunset">Menu</a></li>
-                <li><a href="https://moabcoyote.com" class="block py-2 text-night-rock hover:text-sunset transition">Coyote's Store</a></li>
+        <div id="mobile-menu" class="md:hidden hidden bg-lb-ink border-t border-white/10" aria-hidden="true">
+            <ul class="flex flex-col gap-1 p-4 font-heading text-sm font-bold uppercase tracking-wide">
+                <li><a href="/" class="block py-2 text-clean-white hover:text-lb-red transition">Home</a></li>
+                <li><a href="menu.html" class="block py-2 text-lb-red">Menu</a></li>
+                <li><a href="build.html" class="block py-2 text-clean-white hover:text-lb-red transition">Build a Box</a></li>
+                <li><a href="order.html" class="block py-2 text-clean-white hover:text-lb-red transition">Order</a></li>
+                <li><a href="https://moabcoyote.com" class="block py-2 text-clean-white hover:text-lb-red transition">Coyote's</a></li>
             </ul>
         </div>
     </header>
@@ -376,7 +382,10 @@
                     Text or call with your items and pickup time. We'll have it ready.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="tel:+14352636669" class="inline-flex items-center justify-center gap-2 bg-sunset hover:bg-auburn text-clean-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition-all text-base">
+                    <a href="order.html" class="inline-flex items-center justify-center gap-2 bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition-all text-base">
+                        Order Online &amp; Pick a Time
+                    </a>
+                    <a href="tel:+14352636669" class="inline-flex items-center justify-center gap-2 bg-night-rock hover:bg-black text-clean-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition-all text-base">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         Call (435) 263-6669
                     </a>
@@ -392,8 +401,8 @@
     </main>
     <!-- STICKY MOBILE CTA — hidden on menu page since CTA is inline -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-sunset text-clean-white py-3 px-4 shadow-lg z-30">
-        <a href="tel:+14352636669" class="block text-center font-heading font-bold text-base uppercase tracking-wide">
-            Call to Order
+        <a href="order.html" class="block text-center font-heading font-bold text-base uppercase tracking-wide">
+            Start Order
         </a>
     </div>
 
@@ -401,7 +410,7 @@
     <footer class="bg-night-rock text-clean-white pt-12 pb-24 md:pb-12 px-4">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <p class="font-heading font-bold text-lg mb-2">Moab Lunchbox</p>
+                <p class="font-heading font-black text-lg uppercase">The <span class="text-lb-red">Lunchbox</span></p>
                 <p class="font-body text-sm text-cream/70">Order-ahead food for Moab adventures. Powered by Coyote's at 805 N Main St.</p>
             </div>
             <div>
@@ -410,7 +419,7 @@
                     <li>Daily: 6am – 10am</li>
                     <li>805 N Main St, Moab, UT 84532</li>
                     <li><a href="tel:+14352636669" class="hover:text-sunset transition">(435) 263-6669</a></li>
-                    <li><a href="mailto:orders@moablunchbox.com" class="hover:text-sunset transition">orders@moablunchbox.com</a></li>
+                    <li><a href="mailto:info@moabmerc.com" class="hover:text-sunset transition">info@moabmerc.com</a></li>
                 </ul>
             </div>
             <div>
@@ -425,7 +434,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto text-center text-xs text-cream/50 mt-10 pt-6 border-t border-cream/20">
-            <p>&copy; 2026 Moab Mercantile LLC, dba Moab Lunchbox. All rights reserved.</p>
+            <p>&copy; 2026 Moab Mercantile LLC, dba The Lunchbox. All rights reserved.</p>
         </div>
     </footer>
     <!-- Placeholders -->
