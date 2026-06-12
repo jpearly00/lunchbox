@@ -32,3 +32,16 @@
 ## Deploy / rollback
 - Hosting deploys from `main` (GitHub Pages / Cloudflare Pages with the CNAME).
 - Every change is a git commit — roll back with `git revert <sha>` or `git checkout <sha> -- <file>`.
+
+
+## /sst — Sand & Stars partner page (added 260610)
+- `sst/index.html` — tour-lunch order page for Sand & Stars Touring guests (partnership: Lunchbox provides tour lunches for a fee; included on select SST tours or purchased separately).
+- Menu: the 4 deli sandwiches @ $7.95 (Ham & Swiss, Turkey & Provolone, Veggie Dream, Italian) + Build-Your-Own (meats: ham/turkey/pepperoni/salami/capicola · cheeses: Swiss/provolone · bread: hoagie default or sourdough · veggies: lettuce/tomato · spreads: Vegenaise/yellow mustard/spicy mustard).
+- Order form: name/phone, tour date + tour type, pickup = SST guide pickup OR guest pickup at Coyote's, per-sandwich bread + tweaks, notes. Sends SMS (mobile) to 435-263-6669 / mailto (desktop) to info@moabmerc.com — same Phase-1 flow as order.html. data-square-id placeholders SQ-SST-001…004.
+- Added /sst/ to sitemap.xml. Commit 68510c6.
+
+### HTTPS fix (260610)
+- Found site-wide: GitHub Pages never provisioned the TLS cert for moablunchbox.com (https_certificate: null → https failed on ALL pages; http worked). 
+- Fix: removed + re-added custom domain via `gh api -X PUT repos/jpearly00/lunchbox/pages` → cert state "new" (provisioning).
+- Once cert approved, enforce: `echo '{"https_enforced":true}' | gh api -X PUT repos/jpearly00/lunchbox/pages --input -`
+- A one-shot scheduled task is set to verify + enforce + confirm.
