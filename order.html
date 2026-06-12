@@ -148,7 +148,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <p class="font-heading font-black text-lg uppercase">The <span class="text-lb-red">Lunchbox</span></p>
-                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Powered by Coyote's at 805 N Main St.</p>
+                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Pickup at Coyote's — 805 N Main St.</p>
             </div>
             <div>
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-lb-red mb-3">Pickup</h3>
@@ -156,7 +156,7 @@
                     <li>Daily: 6am – 10am</li>
                     <li>805 N Main St, Moab, UT 84532</li>
                     <li><a href="tel:+14352636669" class="hover:text-lb-red transition">(435) 263-6669</a></li>
-                    <li><a href="mailto:info@moabmerc.com" class="hover:text-lb-red transition">info@moabmerc.com</a></li>
+                    <li><a href="mailto:moabcoyote@gmail.com" class="hover:text-lb-red transition">moabcoyote@gmail.com</a></li>
                 </ul>
             </div>
             <div>
@@ -171,7 +171,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto text-center text-xs text-white/40 mt-10 pt-6 border-t border-white/15">
-            <p>&copy; 2026 Moab Mercantile LLC, dba The Lunchbox. All rights reserved.</p>
+            <p>&copy; 2026 The Lunchbox. All rights reserved.</p>
         </div>
     </footer>
 
@@ -189,7 +189,7 @@
         // Easiest path: a Square Online "order ahead" / checkout-link base.
         // If you use Square Online Ordering, paste its URL here and we deep-link the cart.
         onlineOrderingUrl: '',
-        orderEmail: 'info@moabmerc.com',
+        orderEmail: 'moabcoyote@gmail.com',
         orderSms:   '+14352636669'
     };
     const TAX_RATE = 0.0885; // Moab, UT estimate — confirm exact rate
@@ -278,6 +278,15 @@
             const btns=li.querySelectorAll('button');
             btns[0].addEventListener('click',()=>changeQty(i,-1));
             btns[1].addEventListener('click',()=>changeQty(i,1));
+            // Optional "who's this for" label per cart line — typed value persists, no re-render needed
+            const forInput=document.createElement('input');
+            forInput.type='text'; forInput.maxLength=40;
+            forInput.placeholder='For — name (optional)';
+            forInput.value=c.forName||'';
+            forInput.setAttribute('aria-label','Name of person this item is for (optional)');
+            forInput.className='mt-1 w-full border border-lb-light rounded px-2 py-1 text-xs font-body focus:outline-none focus:ring-1 focus:ring-lb-red';
+            forInput.addEventListener('input',()=>{ cart[i].forName=forInput.value; saveCart(); });
+            li.querySelector('.flex-1').appendChild(forInput);
             ul.appendChild(li);
         });
         updateTotals();
@@ -366,7 +375,7 @@
     function payAtPickup(){ sendOrder(orderPayload(), 'Order sent. Pay at the counter on pickup.'); }
 
     function sendOrder(p, msg){
-        const lines = p.items.map(c=>'• '+c.qty+'x '+c.name+(c.desc?' ('+c.desc+')':'')+' — '+fmt(c.price*c.qty)).join('%0a');
+        const lines = p.items.map(c=>'• '+c.qty+'x '+c.name+(c.forName?' — for '+c.forName.trim():'')+(c.desc?' ('+c.desc+')':'')+' — '+fmt(c.price*c.qty)).join('%0a');
         const body =
             'NEW LUNCHBOX ORDER%0a'+
             'Name: '+(p.customer.name||'(add name)')+'%0a'+
