@@ -45,3 +45,9 @@
 - Fix: removed + re-added custom domain via `gh api -X PUT repos/jpearly00/lunchbox/pages` → cert state "new" (provisioning).
 - Once cert approved, enforce: `echo '{"https_enforced":true}' | gh api -X PUT repos/jpearly00/lunchbox/pages --input -`
 - A one-shot scheduled task is set to verify + enforce + confirm.
+
+### /sst rev (260611 ~2245 MST)
+- Prices removed — lunch is INCLUDED with the tour (no $ shown anywhere).
+- Snacks & drinks "come along with it" copy added (hero, pack card, menu section).
+- Pickup choice REMOVED — SST picks up and brings on tour automatically (or stops by on the way out). Order text now sends fixed "Rides with the Sand & Stars tour."
+- Full-menu mention removed.
