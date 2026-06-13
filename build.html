@@ -6,11 +6,31 @@
     <meta name="description" content="Build Your Own Lunchbox — pick your entrée, side, snack, drink, and dessert and watch your box fill up. Order ahead for pickup in Moab, UT.">
     <meta property="og:title" content="Build Your Own Lunchbox | The Lunchbox — Moab">
     <meta property="og:description" content="Pick an entrée, side, snack, drink, and dessert. Watch your box come together, then order ahead for pickup.">
-    <meta property="og:image" content="https://moablunchbox.com/images/collage.png">
+    <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
     <meta property="og:url" content="https://moablunchbox.com/build.html">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://moablunchbox.com/build.html">
-    <title>Build Your Own Lunchbox | The Lunchbox — Moab</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["FoodEstablishment", "LocalBusiness"],
+        "name": "The Lunchbox",
+        "alternateName": "Moab Lunchbox",
+        "image": "https://moablunchbox.com/images/og-lunchbox.jpg",
+        "url": "https://moablunchbox.com/",
+        "telephone": "+14352636669",
+        "priceRange": "$",
+        "address": {"@type":"PostalAddress","streetAddress":"805 N Main St","addressLocality":"Moab","addressRegion":"UT","postalCode":"84532","addressCountry":"US"},
+        "servesCuisine": ["Sandwiches","Burritos","American"],
+        "parentOrganization": {"@type":"Organization","name":"Coyote's"}
+    }
+    </script>
+
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Build Your Own Lunchbox | The Lunchbox — Moab</title>
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -220,7 +240,7 @@
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-lb-red mb-3">Visit Coyote's</h3>
                 <a href="https://moabcoyote.com" class="block bg-white/5 hover:bg-white/10 rounded-lg p-4 transition">
                     <div class="flex items-center gap-3 mb-1">
-                        <img src="images/logo.jpg" alt="Coyote's logo" class="h-6 w-6 rounded">
+                        <img src="images/logo.jpg" alt="Coyote's logo" class="h-6 w-6 rounded" width="1024" height="1008">
                         <span class="font-heading font-bold text-white text-sm">Coyote's</span>
                     </div>
                     <p class="font-body text-xs text-white/60">Gear, gifts, coffee &amp; ice cream. Our home base.</p>
@@ -243,12 +263,12 @@
         entree: {
             label: 'Entrée', required: true,
             options: [
-                { id:'item_001', name:'Trail Club',      price:11.50, img:'images/sandwiches.png', sq:'SQ-ITEM-001' },
-                { id:'item_002', name:'The Slickrock',    price:12.00, img:'images/sandwiches.png', sq:'SQ-ITEM-002' },
-                { id:'item_003', name:'Desert Veggie',    price:10.50, img:'images/sandwiches.png', sq:'SQ-ITEM-003', tag:'Veg' },
-                { id:'item_004', name:'Coyote BLT',       price:10.00, img:'images/sandwiches.png', sq:'SQ-ITEM-004' },
-                { id:'item_005', name:'Breakfast Burrito',price:8.99,  img:'images/burrito.png',    sq:'SQ-ITEM-005' },
-                { id:'item_006', name:'Red Rock Veggie',  price:8.99,  img:'images/burrito.png',    sq:'SQ-ITEM-006', tag:'Veg' },
+                { id:'item_001', name:'Trail Club',      price:11.50, img:'images/sandwiches.jpg', sq:'SQ-ITEM-001' },
+                { id:'item_002', name:'The Slickrock',    price:12.00, img:'images/sandwiches.jpg', sq:'SQ-ITEM-002' },
+                { id:'item_003', name:'Desert Veggie',    price:10.50, img:'images/sandwiches.jpg', sq:'SQ-ITEM-003', tag:'Veg' },
+                { id:'item_004', name:'Coyote BLT',       price:10.00, img:'images/sandwiches.jpg', sq:'SQ-ITEM-004' },
+                { id:'item_005', name:'Breakfast Burrito',price:8.99,  img:'images/burrito.jpg',    sq:'SQ-ITEM-005' },
+                { id:'item_006', name:'Red Rock Veggie',  price:8.99,  img:'images/burrito.jpg',    sq:'SQ-ITEM-006', tag:'Veg' },
             ]
         },
         side: {
@@ -270,10 +290,10 @@
         drink: {
             label: 'Drink', required: false,
             options: [
-                { id:'drink_001', name:'Bottled Water', price:2.00, img:'images/coffeeside.png', sq:'SQ-DRINK-001' },
-                { id:'drink_002', name:'Coffee 12oz',   price:3.50, img:'images/coffeeside.png', sq:'SQ-DRINK-002' },
-                { id:'drink_003', name:'Lemonade',      price:2.50, img:'images/coffeeside.png', sq:'SQ-DRINK-003' },
-                { id:'drink_004', name:'Gatorade',      price:2.50, img:'images/coffeeside.png', sq:'SQ-DRINK-004' },
+                { id:'drink_001', name:'Bottled Water', price:2.00, img:'images/coffeeside.jpg', sq:'SQ-DRINK-001' },
+                { id:'drink_002', name:'Coffee 12oz',   price:3.50, img:'images/coffeeside.jpg', sq:'SQ-DRINK-002' },
+                { id:'drink_003', name:'Lemonade',      price:2.50, img:'images/coffeeside.jpg', sq:'SQ-DRINK-003' },
+                { id:'drink_004', name:'Gatorade',      price:2.50, img:'images/coffeeside.jpg', sq:'SQ-DRINK-004' },
             ]
         },
         dessert: {
