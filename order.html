@@ -420,11 +420,11 @@
 
     /* ===== ORDERING PAUSED (added 2026-06-15) — delete this whole block to re-enable ordering ===== */
     (function(){
-      var PAUSE_MSG = 'Online ordering is temporarily paused. To place an order, please call (435) 263-6669.';
+      var PAUSE_MSG = 'We recently opened and are still setting up online ordering. For now, please visit the shop to place a pre-order for any time — Coyote\'s, 805 N Main St, Moab.';
       var banner = document.createElement('div');
       banner.setAttribute('role','alert');
       banner.style.cssText = 'position:sticky;top:0;z-index:9999;background:#b3261e;color:#fff;font-weight:700;text-align:center;padding:11px 14px;font-family:system-ui,-apple-system,sans-serif;line-height:1.3';
-      banner.textContent = '⏸ ' + PAUSE_MSG;
+      banner.textContent = '👋 ' + PAUSE_MSG;
       document.body.insertBefore(banner, document.body.firstChild);
       function block(ev){ ev.preventDefault(); ev.stopImmediatePropagation(); alert(PAUSE_MSG); }
       ['checkoutBtn','payAtPickupBtn'].forEach(function(id){
