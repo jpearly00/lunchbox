@@ -417,6 +417,26 @@
     tgl.addEventListener('click',()=>{const o=!mm.classList.contains('hidden');mm.classList.toggle('hidden');tgl.setAttribute('aria-expanded',String(!o));});
 
     loadCart(); renderMenu(); renderCart(); buildDays();
+
+    /* ===== ORDERING PAUSED (added 2026-06-15) — delete this whole block to re-enable ordering ===== */
+    (function(){
+      var PAUSE_MSG = 'Online ordering is temporarily paused. To place an order, please call (435) 263-6669.';
+      var banner = document.createElement('div');
+      banner.setAttribute('role','alert');
+      banner.style.cssText = 'position:sticky;top:0;z-index:9999;background:#b3261e;color:#fff;font-weight:700;text-align:center;padding:11px 14px;font-family:system-ui,-apple-system,sans-serif;line-height:1.3';
+      banner.textContent = '⏸ ' + PAUSE_MSG;
+      document.body.insertBefore(banner, document.body.firstChild);
+      function block(ev){ ev.preventDefault(); ev.stopImmediatePropagation(); alert(PAUSE_MSG); }
+      ['checkoutBtn','payAtPickupBtn'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el){ el.disabled = true; el.addEventListener('click', block, true); }
+      });
+      try { window.validate = function(){
+        ['checkoutBtn','payAtPickupBtn'].forEach(function(id){ var el=document.getElementById(id); if(el) el.disabled=true; });
+        var note=document.getElementById('checkoutNote'); if(note) note.textContent = PAUSE_MSG;
+      }; window.validate(); } catch(e){}
+    })();
+    /* ===== END ORDERING PAUSED ===== */
     </script>
 </body>
 </html>
