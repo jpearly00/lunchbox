@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Moab Lunchbox menu — sandwiches, burritos, picnic combos, sides, and drinks. Order ahead for morning pickup in Moab, UT.">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKRB3XC5S6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKRB3XC5S6');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a, button'); if(!a) return;
+    var href = (a.getAttribute && a.getAttribute('href')) || '';
+    if(href.indexOf('tel:') === 0) gtag('event','phone_click',{number:href.replace('tel:','')});
+    else if(href.indexOf('mailto:') === 0 || href.indexOf('sms:') === 0) gtag('event','order_intent',{channel:href.split(':')[0]});
+    else if(href.indexOf('moabcoyote.com') > -1) gtag('event','coyote_link_click');
+  }, true);
+</script>
+<meta name="description" content="Moab Lunchbox menu — sandwiches, burritos, picnic combos, sides, and drinks. Order ahead for morning pickup in Moab, UT.">
     <meta property="og:title" content="Menu | Moab Lunchbox — Order-Ahead Food in Moab, UT">
     <meta property="og:description" content="Sandwiches, burritos, picnic combos, and more. Browse the full menu and text your order.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
@@ -103,6 +118,7 @@
                 <li><a href="menu.html" class="text-lb-red border-b-2 border-lb-red pb-1">Menu</a></li>
                 <li><a href="build.html" class="text-clean-white hover:text-lb-red transition">Build a Box</a></li>
                 <li><a href="order.html" class="text-clean-white hover:text-lb-red transition">Order</a></li>
+                <li><a href="allergens.html" class="text-clean-white hover:text-lb-red transition">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="text-clean-white hover:text-lb-red transition">Coyote's</a></li>
             </ul>
 
@@ -123,6 +139,7 @@
                 <li><a href="menu.html" class="block py-2 text-lb-red">Menu</a></li>
                 <li><a href="build.html" class="block py-2 text-clean-white hover:text-lb-red transition">Build a Box</a></li>
                 <li><a href="order.html" class="block py-2 text-clean-white hover:text-lb-red transition">Order</a></li>
+                <li><a href="allergens.html" class="block py-2 text-clean-white hover:text-lb-red transition">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="block py-2 text-clean-white hover:text-lb-red transition">Coyote's</a></li>
             </ul>
         </div>

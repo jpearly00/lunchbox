@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ingredients, Allergens &amp; Diet — The Lunchbox &amp; Coyote's, Moab</title>
+<meta name="description" content="Ingredients, allergen, and diet information for grab-and-go food at The Lunchbox and Coyote's Outpost — 805 N Main St, Moab, UT. Scan, check, and eat with confidence." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://moablunchbox.com/allergens.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ingredients, Allergens & Diet — The Lunchbox & Coyote's" />
+<meta property="og:description" content="Ingredients, allergens, and diet info for grab-and-go food at 805 N Main St, Moab." />
+<meta property="og:url" content="https://moablunchbox.com/allergens.html" />
+<style>
+  :root{
+    --paper:#F2F0E9; --paper-2:#FBFAF6; --ink:#1A1A1A; --ink-2:#4A453E;
+    --teal:#3CC4BE; --teal-d:#2E8E89; --rust:#8C4028; --rust-2:#CC5833;
+    --gold:#FFD64A; --line:#E2DDD1; --veg:#3F9D4A; --vegan:#2E8E89; --warn:#B23A1E;
+    --shadow:6px 6px 0 var(--ink);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--rust-2)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px}
+
+  /* Header */
+  header.top{background:var(--ink);color:var(--paper);padding:18px 0 16px}
+  .top .brandline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  .top h1{margin:.35em 0 .15em;font-size:clamp(26px,6vw,40px);line-height:1.05;font-weight:900;letter-spacing:-.01em}
+  .top .sub{color:#D7D2C7;font-size:15px}
+  .updated{margin-top:10px;font-size:12px;color:#A9A498}
+
+  /* Notices */
+  .notice{border:3px solid var(--ink);background:var(--paper-2);box-shadow:var(--shadow);border-radius:12px;padding:14px 16px;margin:16px 0}
+  .notice h2{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.06em}
+  .notice p{margin:0;font-size:14px;color:var(--ink-2)}
+  .notice.warn{background:#FBEFE9;border-color:var(--warn)}
+  .notice.warn h2{color:var(--warn)}
+  .notice.flag{background:#FFF8E4;border-color:#C99A12}
+  .notice.flag h2{color:#9A7400}
+
+  /* Controls */
+  .controls{position:sticky;top:0;z-index:20;background:var(--paper);padding:14px 0 10px;border-bottom:1px solid var(--line)}
+  .search{width:100%;padding:12px 14px;font-size:16px;border:2px solid var(--ink);border-radius:10px;background:#fff}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .chip{appearance:none;cursor:pointer;font:inherit;font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .chip.veg[aria-pressed="true"]{background:var(--veg);border-color:var(--veg)}
+  .chip.vegan[aria-pressed="true"]{background:var(--vegan);border-color:var(--vegan)}
+  .chips .lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);align-self:center;font-weight:700;margin-right:2px}
+  .avoid .chip[aria-pressed="true"]{background:var(--warn);border-color:var(--warn);color:#fff}
+  .station-banner{display:none;align-items:center;justify-content:space-between;gap:10px;background:var(--teal);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:10px 14px;margin-top:10px;font-weight:700}
+  .station-banner a{color:var(--ink);text-decoration:underline;font-size:14px;white-space:nowrap}
+
+  /* Stations + items */
+  main{padding:8px 0 40px}
+  .station{margin:26px 0 0}
+  .station > h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);border-bottom:2px solid var(--line);padding-bottom:6px;margin:0 0 4px}
+  .station > .station-note{font-size:13px;color:var(--ink-2);margin:0 0 12px}
+  .item{border:2px solid var(--ink);border-radius:12px;background:#fff;padding:14px 16px;margin:12px 0;box-shadow:4px 4px 0 var(--ink)}
+  .item h3{margin:0 0 4px;font-size:18px}
+  .item .desc{margin:0 0 10px;font-size:14px;color:var(--ink-2)}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+  .badge{font-size:12px;font-weight:800;letter-spacing:.03em;padding:3px 9px;border-radius:999px;border:1.5px solid var(--ink)}
+  .badge.veg{background:#E6F4E7;color:var(--veg);border-color:var(--veg)}
+  .badge.vegan{background:#E2F2F1;color:var(--vegan);border-color:var(--vegan)}
+  .badge.meat{background:#F3E7E2;color:var(--rust)}
+  .badge.spicy{background:#FBE6DF;color:var(--warn);border-color:var(--warn)}
+  .field{font-size:14px;margin:8px 0 0}
+  .field .k{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:11px;color:var(--ink-2);display:block;margin-bottom:2px}
+  .contains{display:flex;flex-wrap:wrap;gap:6px}
+  .allergen{font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;background:#FBEFE9;border:1px solid #E3B7A6;color:var(--warn)}
+  .none{color:var(--veg);font-weight:700;font-size:13px}
+  .draft{display:inline-block;font-size:11px;font-weight:800;color:#9A7400;background:#FFF8E4;border:1px solid #C99A12;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+  .empty{display:none;text-align:center;color:var(--ink-2);padding:30px 10px;font-size:15px}
+
+  /* Footer / contact */
+  footer{background:var(--ink);color:var(--paper);padding:28px 0 36px;margin-top:20px}
+  footer h2{margin:0 0 8px;font-size:20px;font-weight:900}
+  footer p{margin:0 0 14px;color:#D7D2C7;font-size:15px;max-width:620px}
+  .contacts{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:560px){.contacts{grid-template-columns:1fr 1fr}}
+  .contact-card{background:#252220;border:1px solid #3a3633;border-radius:10px;padding:14px 16px}
+  .contact-card .name{font-weight:800;color:var(--teal);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .contact-card a{color:var(--paper);text-decoration:none;display:block;font-size:15px;margin:3px 0}
+  .contact-card a:hover{color:var(--gold)}
+  .foot-links{margin-top:22px;font-size:13px;color:#A9A498}
+  .foot-links a{color:#D7D2C7}
+  .skip{position:absolute;left:-9999px}
+  .skip:focus{position:static;display:inline-block;background:var(--teal);color:var(--ink);padding:8px 12px}
+</style>
+</head>
+<body>
+<a class="skip" href="#list">Skip to food list</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandline">The Lunchbox · Coyote's Outpost · 805 N Main St, Moab</div>
+    <h1 id="page-title">Ingredients, Allergens &amp; Diet</h1>
+    <p class="sub">What's in our grab-and-go food. Scan, check, and eat with confidence.</p>
+    <p class="updated">Last updated: <span id="updated-date">June 13, 2026</span></p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- DRAFT placeholder banner — remove this notice once all items are verified -->
+  <div class="notice flag" id="draft-notice">
+    <h2>Heads up — we're still filling this in</h2>
+    <p>Ingredient and allergen details are being finalized and double-checked, item by item. Anything marked <span class="draft">DRAFT</span> isn't confirmed yet. If you have an allergy and don't see what you need, just ask a team member — we're glad to help.</p>
+  </div>
+
+  <!-- CROSS-CONTAMINATION — required warning -->
+  <div class="notice warn">
+    <h2>Cross-contamination is always possible</h2>
+    <p>We prep, cook, and clean in the optimal order to keep things separated — but this is a single, shared, multi-use kitchen and store. We can't guarantee any item is free of contact with other ingredients or allergens.</p>
+  </div>
+
+  <!-- GLUTEN-FREE status -->
+  <div class="notice">
+    <h2>No gluten-free at this time</h2>
+    <p>We do not currently offer gluten-free items, and we can't guarantee any item is free of wheat or gluten. We'll update this page if that changes.</p>
+  </div>
+
+  <!-- VEGAN AIOLI explanation -->
+  <div class="notice">
+    <h2>Why our sandwiches use vegan aioli</h2>
+    <p>We spread vegan aioli on our sandwiches because we think it's higher quality and better tasting — plain and simple. (It also happens to be quite a bit more expensive than the usual stuff. We decided it's worth it.)</p>
+  </div>
+
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <input id="search" class="search" type="search" placeholder="Search food or an ingredient…" aria-label="Search food or ingredients" />
+    <div class="chips" role="group" aria-label="Diet filter">
+      <span class="lbl">Show</span>
+      <button class="chip" data-diet="all" aria-pressed="true">All</button>
+      <button class="chip veg" data-diet="vegetarian" aria-pressed="false">Vegetarian</button>
+      <button class="chip vegan" data-diet="vegan" aria-pressed="false">Vegan</button>
+    </div>
+    <div class="chips avoid" role="group" aria-label="Avoid allergen">
+      <span class="lbl">Avoid</span>
+      <button class="chip" data-avoid="Dairy" aria-pressed="false">Dairy</button>
+      <button class="chip" data-avoid="Egg" aria-pressed="false">Egg</button>
+      <button class="chip" data-avoid="Soy" aria-pressed="false">Soy</button>
+      <button class="chip" data-avoid="Wheat/Gluten" aria-pressed="false">Wheat/Gluten</button>
+      <button class="chip" data-avoid="Tree nuts" aria-pressed="false">Tree nuts</button>
+      <button class="chip" data-avoid="Peanuts" aria-pressed="false">Peanuts</button>
+      <button class="chip" data-avoid="Sesame" aria-pressed="false">Sesame</button>
+    </div>
+    <div class="station-banner" id="station-banner">
+      <span id="station-banner-label"></span>
+      <a href="allergens.html">View everything →</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div id="list"></div>
+    <p class="empty" id="empty">No items match those filters. Try clearing a filter or your search.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Still have questions?</h2>
+    <p>If you have a food allergy or a diet question and you're not sure about something, please reach out or ask us in person. We'd rather you ask than guess.</p>
+    <div class="contacts">
+      <div class="contact-card">
+        <div class="name">The Lunchbox</div>
+        <a href="tel:+14352636669">Call or text: 435 263 6669</a>
+        <a href="mailto:moablunchbox@gmail.com">moablunchbox@gmail.com</a>
+        <a href="https://moablunchbox.com">moablunchbox.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="name">Coyote's Outpost</div>
+        <a href="tel:+14354292724">Call or text: 435 429 2724</a>
+        <a href="mailto:moabcoyote@gmail.com">moabcoyote@gmail.com</a>
+        <a href="https://moabcoyote.com">moabcoyote.com</a>
+      </div>
+    </div>
+    <p class="foot-links">805 N Main St, Moab, UT 84532 · Open daily ·
+      <a href="https://moablunchbox.com">The Lunchbox</a> ·
+      <a href="https://moabcoyote.com">Coyote's</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================================
+   MENU DATA — THE ONLY PART YOU NEED TO EDIT TO KEEP THIS PAGE UP TO DATE.
+   ----------------------------------------------------------------------------
+   • Add / edit / remove items in the MENU array below.
+   • Update LAST_UPDATED when you make changes (shows at top of page).
+   • Each item:
+       station   : which station group it shows under (see STATIONS list)
+       name      : item name
+       desc      : one short sentence (optional)
+       diet      : any of  "vegetarian", "vegan", "contains-meat", "contains-pork", "spicy"
+       contains  : allergens present — use these exact words so the "Avoid"
+                   filter works: "Dairy","Egg","Soy","Wheat/Gluten",
+                   "Tree nuts","Peanuts","Fish","Shellfish","Sesame"
+       ingredients: plain-text list. Leave "" if not finalized yet.
+       draft     : true while the info is unconfirmed (shows a DRAFT tag)
+   ============================================================================ */
+  const LAST_UPDATED = "June 13, 2026";
+
+  // Station order + labels. slug is used in QR links:  allergens.html?station=SLUG
+  const STATIONS = [
+    { slug:"warmer-burritos", label:"Warmer Case — Breakfast Burritos", note:"Hot and ready in the warmer case." },
+    { slug:"fridge-salsas",   label:"Refrigerator — Salsas",            note:"Grab a salsa from the cold case." },
+    { slug:"fridge-grab-go",  label:"Refrigerator — Cold Grab & Go",    note:"Pre-made sandwiches and wraps, ready to go." },
+    { slug:"sandwiches",      label:"Deli — Made-Fresh Sandwiches",     note:"Built to order at the deli counter." },
+    { slug:"baked-goods",     label:"Baked Goods & Sweets",             note:"" },
+  ];
+
+  const MENU = [
+    // ---- WARMER CASE: BURRITOS ----
+    { station:"warmer-burritos", name:"Bacon Breakfast Burrito", desc:"Egg, cheese, potato, and bacon in a flour tortilla.",
+      diet:["contains-meat","contains-pork"], contains:["Egg","Dairy","Wheat/Gluten","Soy"], ingredients:"", draft:true },
+    { station:"warmer-burritos", name:"Sausage Breakfast Burrito", desc:"Egg, cheese, potato, and sausage in a flour tortilla.",
+      diet:["contains-meat","contains-pork"], contains:["Egg","Dairy","Wheat/Gluten","Soy"], ingredients:"", draft:true },
+    { station:"warmer-burritos", name:"Veggie Breakfast Burrito", desc:"Egg, cheese, potato, and peppers in a flour tortilla.",
+      diet:["vegetarian"], contains:["Egg","Dairy","Wheat/Gluten","Soy"], ingredients:"", draft:true },
+
+    // ---- REFRIGERATOR: SALSAS ----
+    { station:"fridge-salsas", name:"Mild Red Salsa", desc:"Tomato-based, mild.",
+      diet:["vegan"], contains:[], ingredients:"", draft:true },
+    { station:"fridge-salsas", name:"Roasted Green Salsa", desc:"Tomatillo and roasted chiles.",
+      diet:["vegan"], contains:[], ingredients:"", draft:true },
+    { station:"fridge-salsas", name:"Hot Salsa", desc:"Our spiciest. Handle with respect.",
+      diet:["vegan","spicy"], contains:[], ingredients:"", draft:true },
+
+    // ---- REFRIGERATOR: COLD GRAB & GO ----
+    { station:"fridge-grab-go", name:"Turkey Sandwich", desc:"Roasted turkey on fresh bread with vegan aioli.",
+      diet:["contains-meat"], contains:["Wheat/Gluten","Soy"], ingredients:"", draft:true },
+    { station:"fridge-grab-go", name:"Ham Sandwich", desc:"Ham and cheese on fresh bread with vegan aioli.",
+      diet:["contains-meat","contains-pork"], contains:["Wheat/Gluten","Dairy","Soy"], ingredients:"", draft:true },
+    { station:"fridge-grab-go", name:"Veggie Sandwich", desc:"Veggies and cheese on fresh bread with vegan aioli.",
+      diet:["vegetarian"], contains:["Wheat/Gluten","Dairy","Soy"], ingredients:"", draft:true },
+
+    // ---- DELI: MADE-FRESH SANDWICHES ----
+    { station:"sandwiches", name:"Build-Your-Own Sandwich", desc:"Pick your protein, cheese, and toppings. Vegan aioli standard.",
+      diet:[], contains:["Wheat/Gluten","Soy"], ingredients:"", draft:true },
+
+    // ---- BAKED GOODS & SWEETS ----
+    { station:"baked-goods", name:"Muffin", desc:"Rotating daily flavor.",
+      diet:["vegetarian"], contains:["Wheat/Gluten","Egg","Dairy"], ingredients:"", draft:true },
+    { station:"baked-goods", name:"Cookie", desc:"Fresh-baked.",
+      diet:["vegetarian"], contains:["Wheat/Gluten","Egg","Dairy","Soy"], ingredients:"", draft:true },
+  ];
+
+/* ===== Rendering / filtering engine — no need to edit below this line ===== */
+  document.getElementById("updated-date").textContent = LAST_UPDATED;
+
+  const DIET_LABEL = { "vegetarian":"Vegetarian", "vegan":"Vegan", "contains-meat":"Contains meat", "contains-pork":"Contains pork", "spicy":"Spicy" };
+  const DIET_CLASS = { "vegetarian":"veg", "vegan":"vegan", "contains-meat":"meat", "contains-pork":"meat", "spicy":"spicy" };
+
+  const params = new URLSearchParams(location.search);
+  let stationFilter = params.get("station");
+  if (stationFilter && !STATIONS.some(s=>s.slug===stationFilter)) stationFilter = null;
+
+  const state = { q:"", diet:"all", avoid:new Set() };
+
+  function itemMatches(it){
+    if (state.diet !== "all" && !(it.diet||[]).includes(state.diet)) return false;
+    for (const a of state.avoid){ if ((it.contains||[]).includes(a)) return false; }
+    if (state.q){
+      const hay = (it.name+" "+(it.desc||"")+" "+(it.ingredients||"")+" "+(it.contains||[]).join(" ")).toLowerCase();
+      if (!hay.includes(state.q)) return false;
+    }
+    return true;
+  }
+
+  function render(){
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+    let shown = 0;
+    const stations = stationFilter ? STATIONS.filter(s=>s.slug===stationFilter) : STATIONS;
+    for (const st of stations){
+      const items = MENU.filter(it=>it.station===st.slug && itemMatches(it));
+      if (!items.length) continue;
+      shown += items.length;
+      const sec = document.createElement("section");
+      sec.className = "station"; sec.id = st.slug;
+      sec.innerHTML = "<h2>"+st.label+"</h2>" + (st.note?'<p class="station-note">'+st.note+'</p>':'');
+      for (const it of items) sec.appendChild(itemEl(it));
+      list.appendChild(sec);
+    }
+    document.getElementById("empty").style.display = shown ? "none" : "block";
+  }
+
+  function itemEl(it){
+    const el = document.createElement("article");
+    el.className = "item";
+    let html = "<h3>"+it.name + (it.draft?'<span class="draft">DRAFT</span>':'') + "</h3>";
+    if (it.desc) html += '<p class="desc">'+it.desc+'</p>';
+    if (it.diet && it.diet.length){
+      html += '<div class="badges">';
+      for (const d of it.diet) html += '<span class="badge '+(DIET_CLASS[d]||'')+'">'+(DIET_LABEL[d]||d)+'</span>';
+      html += '</div>';
+    }
+    html += '<div class="field"><span class="k">Ingredients</span>' +
+            (it.ingredients ? escapeHtml(it.ingredients) : '<em>Being finalized — check back soon, or ask us.</em>') + '</div>';
+    html += '<div class="field"><span class="k">Contains</span><div class="contains">';
+    if (it.contains && it.contains.length){ for (const a of it.contains) html += '<span class="allergen">'+a+'</span>'; }
+    else html += '<span class="none">No major allergens listed</span>';
+    html += '</div></div>';
+    el.innerHTML = html;
+    return el;
+  }
+
+  function escapeHtml(s){ return s.replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+  // Station deep-link banner (used by station-specific QR codes)
+  if (stationFilter){
+    const st = STATIONS.find(s=>s.slug===stationFilter);
+    const b = document.getElementById("station-banner");
+    document.getElementById("station-banner-label").textContent = "Showing: " + st.label;
+    b.style.display = "flex";
+    document.getElementById("page-title").textContent = st.label;
+    document.title = st.label + " — The Lunchbox & Coyote's";
+  }
+
+  // Wire controls
+  document.getElementById("search").addEventListener("input", e=>{ state.q = e.target.value.trim().toLowerCase(); render(); });
+  document.querySelectorAll(".chips [data-diet]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      state.diet = btn.dataset.diet;
+      document.querySelectorAll(".chips [data-diet]").forEach(b=>b.setAttribute("aria-pressed", String(b===btn)));
+      render();
+    });
+  });
+  document.querySelectorAll(".avoid [data-avoid]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const a = btn.dataset.avoid;
+      if (state.avoid.has(a)){ state.avoid.delete(a); btn.setAttribute("aria-pressed","false"); }
+      else { state.avoid.add(a); btn.setAttribute("aria-pressed","true"); }
+      render();
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>

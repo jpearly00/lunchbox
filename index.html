@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Lunchbox — order-ahead sandwiches, burritos, and build-your-own lunchboxes for pickup in Moab, UT. Good eats. Grab, go, repeat.">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKRB3XC5S6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKRB3XC5S6');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a, button'); if(!a) return;
+    var href = (a.getAttribute && a.getAttribute('href')) || '';
+    if(href.indexOf('tel:') === 0) gtag('event','phone_click',{number:href.replace('tel:','')});
+    else if(href.indexOf('mailto:') === 0 || href.indexOf('sms:') === 0) gtag('event','order_intent',{channel:href.split(':')[0]});
+    else if(href.indexOf('moabcoyote.com') > -1) gtag('event','coyote_link_click');
+  }, true);
+</script>
+<meta name="description" content="The Lunchbox — order-ahead sandwiches, burritos, and build-your-own lunchboxes for pickup in Moab, UT. Good eats. Grab, go, repeat.">
     <meta property="og:title" content="The Lunchbox — Order-Ahead Good Eats in Moab, UT">
     <meta property="og:description" content="Sandwiches, burritos, and build-your-own lunchboxes. Pre-order, pick your pickup time, grab and go.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
@@ -77,6 +92,7 @@
                 <li><a href="menu.html" class="hover:text-lb-red transition">Menu</a></li>
                 <li><a href="build.html" class="hover:text-lb-red transition">Build a Box</a></li>
                 <li><a href="order.html" class="hover:text-lb-red transition">Order</a></li>
+                <li><a href="allergens.html" class="hover:text-lb-red transition">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="hover:text-lb-red transition">Coyote's</a></li>
             </ul>
             <a href="order.html" class="hidden md:inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-5 py-2 rounded-lg shadow transition text-sm">Start Order</a>
@@ -90,6 +106,7 @@
                 <li><a href="menu.html" class="block py-2 hover:text-lb-red">Menu</a></li>
                 <li><a href="build.html" class="block py-2 hover:text-lb-red">Build a Box</a></li>
                 <li><a href="order.html" class="block py-2 hover:text-lb-red">Order</a></li>
+                <li><a href="allergens.html" class="block py-2 hover:text-lb-red">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="block py-2 hover:text-lb-red">Coyote's</a></li>
                 <li class="mt-2"><a href="order.html" class="block text-center bg-lb-red text-white font-bold px-6 py-3 rounded-lg">Start Order</a></li>
             </ul>
@@ -236,6 +253,7 @@
                     <li>805 N Main St, Moab, UT 84532</li>
                     <li><a href="tel:+14352636669" class="hover:text-lb-red transition">(435) 263-6669</a></li>
                     <li><a href="mailto:moablunchbox@gmail.com" class="hover:text-lb-red transition">moablunchbox@gmail.com</a></li>
+                    <li><a href="allergens.html" class="hover:text-lb-red transition">Ingredients &amp; Allergens</a></li>
                 </ul>
             </div>
             <div>

@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Order ahead from The Lunchbox — pick your items and a pickup time, pay with Square or at the counter. Pickup at Coyote's, 805 N Main St, Moab.">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKRB3XC5S6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKRB3XC5S6');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a, button'); if(!a) return;
+    var href = (a.getAttribute && a.getAttribute('href')) || '';
+    if(href.indexOf('tel:') === 0) gtag('event','phone_click',{number:href.replace('tel:','')});
+    else if(href.indexOf('mailto:') === 0 || href.indexOf('sms:') === 0) gtag('event','order_intent',{channel:href.split(':')[0]});
+    else if(href.indexOf('moabcoyote.com') > -1) gtag('event','coyote_link_click');
+  }, true);
+</script>
+<meta name="description" content="Order ahead from The Lunchbox — pick your items and a pickup time, pay with Square or at the counter. Pickup at Coyote's, 805 N Main St, Moab.">
     <meta property="og:title" content="Order Ahead | The Lunchbox — Moab">
     <meta property="og:description" content="Pre-order food for pickup in Moab. Pick a pickup time, check out with Square.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">

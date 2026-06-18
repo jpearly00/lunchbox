@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tour lunches for Sand & Stars Touring guests — packed fresh by The Lunchbox in Moab and brought along on your tour. Snacks and drinks included.">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKRB3XC5S6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKRB3XC5S6');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a, button'); if(!a) return;
+    var href = (a.getAttribute && a.getAttribute('href')) || '';
+    if(href.indexOf('tel:') === 0) gtag('event','phone_click',{number:href.replace('tel:','')});
+    else if(href.indexOf('mailto:') === 0 || href.indexOf('sms:') === 0) gtag('event','order_intent',{channel:href.split(':')[0]});
+    else if(href.indexOf('moabcoyote.com') > -1) gtag('event','coyote_link_click');
+  }, true);
+</script>
+<meta name="description" content="Tour lunches for Sand & Stars Touring guests — packed fresh by The Lunchbox in Moab and brought along on your tour. Snacks and drinks included.">
     <meta property="og:title" content="Sand & Stars Tour Lunches | The Lunchbox — Moab">
     <meta property="og:description" content="Adventuring with Sand & Stars? Lunch comes with your tour — order what you want and it rides along. Packed fresh at Coyote's.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
