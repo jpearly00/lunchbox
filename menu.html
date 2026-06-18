@@ -8,6 +8,7 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  (function(){var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'';var eu=/^(Europe\/|Atlantic\/(Azores|Madeira|Canary)|Africa\/Ceuta)/.test(tz);var saved=(document.cookie.match(/(?:^|; )cc_consent=([^;]+)/)||[])[1];var grant=(!eu)||saved==='accepted';gtag('consent','default',{ad_storage:grant?'granted':'denied',analytics_storage:grant?'granted':'denied',ad_user_data:grant?'granted':'denied',ad_personalization:grant?'granted':'denied'});window.__ccEU=eu;window.__ccSaved=saved;})();
   gtag('js', new Date());
   gtag('config', 'G-HKRB3XC5S6');
   document.addEventListener('click', function(e){
@@ -481,5 +482,36 @@
             mobileMenu.setAttribute('aria-hidden', String(isOpen));
         });
     </script>
+<!-- consent banner (self-hosted, EU-only, free) -->
+<style>
+#cc-banner{position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;max-width:560px;margin:0 auto;background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;padding:14px 16px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.45;display:none}
+#cc-banner.show{display:block}
+#cc-banner p{margin:0 0 10px}
+#cc-banner a{color:inherit;text-decoration:underline}
+#cc-banner .cc-row{display:flex;gap:8px;justify-content:flex-end}
+#cc-banner button{font:inherit;font-weight:700;padding:7px 14px;border:2px solid #1a1a1a;cursor:pointer;border-radius:4px}
+#cc-accept{background:#1a1a1a;color:#fff}
+#cc-decline{background:#fff;color:#1a1a1a}
+</style>
+<div id="cc-banner" role="dialog" aria-label="Cookie consent">
+  <p>We use cookies for anonymous analytics to improve this site. No advertising, no cross-site tracking.</p>
+  <div class="cc-row">
+    <button id="cc-decline" type="button">Decline</button>
+    <button id="cc-accept" type="button">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(!window.__ccEU || window.__ccSaved) return;
+  var b=document.getElementById('cc-banner'); if(!b) return;
+  b.classList.add('show');
+  function done(v){document.cookie='cc_consent='+v+';path=/;max-age=31536000;samesite=lax';b.classList.remove('show');}
+  document.getElementById('cc-accept').addEventListener('click',function(){
+    if(window.gtag)gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+    done('accepted');
+  });
+  document.getElementById('cc-decline').addEventListener('click',function(){done('declined');});
+})();
+</script>
 </body>
 </html>
