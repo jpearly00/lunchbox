@@ -20,8 +20,8 @@
   }, true);
 </script>
 <meta name="robots" content="noindex">
-    <meta name="description" content="Build Your Own Lunchbox — pick your entrée, side, snack, drink, and dessert and watch your box fill up. Order ahead for pickup in Moab, UT.">
-    <meta property="og:title" content="Build Your Own Lunchbox | The Lunchbox — Moab">
+    <meta name="description" content="Build Your Own Lunchbox, pick your entrée, side, snack, drink, and dessert and watch your box fill up. Order ahead for pickup in Moab, UT.">
+    <meta property="og:title" content="Build Your Own Lunchbox | The Lunchbox, Moab">
     <meta property="og:description" content="Pick an entrée, side, snack, drink, and dessert. Watch your box come together, then order ahead for pickup.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
     <meta property="og:url" content="https://moablunchbox.com/build.html">
@@ -47,7 +47,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Build Your Own Lunchbox | The Lunchbox — Moab</title>
+<title>Build Your Own Lunchbox | The Lunchbox, Moab</title>
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -82,7 +82,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* The Lunchbox Design System — signature treatments */
+        /* The Lunchbox Design System, signature treatments */
         body{ font-family:'Archivo',system-ui,sans-serif; }
         h1,h2,.t-display{ font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:-0.01em; }
         header nav > a:first-child{ font-family:'Anton',sans-serif; font-weight:400; letter-spacing:0; }
@@ -163,7 +163,7 @@
 
     <!-- EXAMPLE-ONLY banner -->
     <div class="bg-lb-ink text-white text-center px-4 py-2 text-xs sm:text-sm font-heading font-bold uppercase tracking-wide border-b-4 border-lb-red">
-        Example only — Build-a-Box isn't taking orders yet. Have a play; real ordering goes live once the menu's set.
+        Example only, Build-a-Box isn't taking orders yet. Have a play; real ordering goes live once the menu's set.
     </div>
 
     <main id="main-content" class="max-w-6xl mx-auto px-4 py-8 pb-32">
@@ -213,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-xs text-lb-ink/45 mt-2">Preview uses placeholder photos — swap in final plated shots in <code>/images</code>.</p>
+                <p class="text-center text-xs text-lb-ink/45 mt-2">Preview uses placeholder photos, swap in final plated shots in <code>/images</code>.</p>
 
                 <!-- Running total + CTA -->
                 <div class="bg-white rounded-xl shadow-md p-5 mt-5 border border-lb-light">
@@ -249,7 +249,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <p class="font-heading font-black text-lg uppercase">The <span class="text-lb-red">Lunchbox</span></p>
-                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Pickup at Coyote's — 805 N Main St.</p>
+                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Pickup at Coyote's, 805 N Main St.</p>
             </div>
             <div>
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-lb-red mb-3">Pickup</h3>
@@ -278,7 +278,7 @@
 
     <script>
     /* ============================================================
-       BUILD YOUR OWN LUNCHBOX — data + composite engine
+       BUILD YOUR OWN LUNCHBOX, data + composite engine
        Images are PLACEHOLDERS. Replace `img` paths with final
        plated cut-out photos as they're shot. data-square-id maps
        1:1 to Square catalog items for future checkout.
@@ -434,10 +434,10 @@
             items: items.map(o=>({ id:o.id, name:o.name, price:o.price, sq:o.sq })),
             bundled, total: Math.max(total,0),
         };
-        // EXAMPLE ONLY — online ordering isn't switched on yet; show a notice instead of placing an order.
+        // EXAMPLE ONLY, online ordering isn't switched on yet; show a notice instead of placing an order.
         const forName=(document.getElementById('boxForName').value||'').trim().slice(0,40).replace(/[<>]/g,'');
         const note=document.getElementById('exampleNote');
-        note.innerHTML = '<strong>Nice box'+(forName?', '+forName:'')+'!</strong><br>This is a preview — online ordering isn\'t live yet. Once we lock the menu, this button will check you out for real (pay + send to the kitchen).';
+        note.innerHTML = '<strong>Nice box'+(forName?', '+forName:'')+'!</strong><br>This is a preview, online ordering isn\'t live yet. Once we lock the menu, this button will check you out for real (pay + send to the kitchen).';
         note.classList.remove('hidden');
         note.scrollIntoView({behavior:'smooth',block:'center'});
     }

@@ -19,8 +19,8 @@
     else if(href.indexOf('moabcoyote.com') > -1) gtag('event','coyote_link_click');
   }, true);
 </script>
-<meta name="description" content="Order ahead from The Lunchbox — pick your items and a pickup time, pay with Square or at the counter. Pickup at Coyote's, 805 N Main St, Moab.">
-    <meta property="og:title" content="Order Ahead | The Lunchbox — Moab">
+<meta name="description" content="Order ahead from The Lunchbox, pick your items and a pickup time, pay with Square or at the counter. Pickup at Coyote's, 805 N Main St, Moab.">
+    <meta property="og:title" content="Order Ahead | The Lunchbox, Moab">
     <meta property="og:description" content="Pre-order food for pickup in Moab. Pick a pickup time, check out with Square.">
     <meta property="og:image" content="https://moablunchbox.com/images/og-lunchbox.jpg">
     <meta property="og:url" content="https://moablunchbox.com/order.html">
@@ -45,7 +45,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Order Ahead | The Lunchbox — Moab</title>
+<title>Order Ahead | The Lunchbox, Moab</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -55,7 +55,7 @@
         }}}
     </script>
     <style>
-        /* The Lunchbox Design System — signature treatments (red/black/paper, keylines, hard shadows) */
+        /* The Lunchbox Design System, signature treatments (red/black/paper, keylines, hard shadows) */
         body{ font-family:'Archivo',system-ui,sans-serif; }
         h1,h2,.t-display{ font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:-0.01em; }
         header nav > a:first-child{ font-family:'Anton',sans-serif; font-weight:400; letter-spacing:0; }
@@ -157,7 +157,7 @@
                     </button>
                     <button id="payAtPickupBtn" disabled
                         class="w-full bg-white border-2 border-lb-ink hover:bg-lb-ink hover:text-white disabled:opacity-40 disabled:cursor-not-allowed text-lb-ink font-heading font-bold uppercase tracking-wide px-6 py-3 rounded-lg transition">
-                        Send Order — Pay at Pickup
+                        Send Order, Pay at Pickup
                     </button>
                     <p id="checkoutNote" class="text-center text-xs text-lb-ink/45"></p>
                 </div>
@@ -175,7 +175,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <p class="font-heading font-black text-lg uppercase">The <span class="text-lb-red">Lunchbox</span></p>
-                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Pickup at Coyote's — 805 N Main St.</p>
+                <p class="font-body text-sm text-white/60 mt-2">Order-ahead good eats for Moab adventures. Pickup at Coyote's, 805 N Main St.</p>
             </div>
             <div>
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-lb-red mb-3">Pickup</h3>
@@ -204,7 +204,7 @@
 
     <script>
     /* ============================================================
-       SQUARE CONFIG  — wire to the info@ Square account.
+       SQUARE CONFIG, wire to the info@ Square account.
        Until enabled:true, "Pay with Square" falls back to the
        pay-at-pickup flow (order sent by SMS/email). Fill these from
        the Square dashboard (info@ account) → Online / Developer.
@@ -219,7 +219,7 @@
         orderEmail: 'moablunchbox@gmail.com',
         orderSms:   '+14352636669'
     };
-    const TAX_RATE = 0.0885; // Moab, UT estimate — confirm exact rate
+    const TAX_RATE = 0.0885; // Moab, UT estimate, confirm exact rate
     // Order-alert endpoint (GAS web app): emails moablunchbox@gmail.com + texts 435-260-8260 on each order.
     const ALERT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxZWDvtRgz98NjHCUy4VATuHw1sHsh48r3Vy4E45EA3vFnSBsVOiDsBR3rb_gOVrmv6yg/exec';
     function notifyShop(p){
@@ -230,7 +230,7 @@
 
     /* ---- Menu (mirrors menu.html; data-square-id maps to Square catalog) ---- */
     const MENU = [
-        { cat:'Sandwiches — $7.95 each', items:[
+        { cat:'Sandwiches, $7.95 each', items:[
             { id:'sand_turkeyprov', name:'Turkey & Provolone', price:7.95, sq:'SQ-SAND-TURKPROV', desc:'Turkey, provolone, lettuce, tomato, mayo on a hoagie' },
             { id:'sand_hamswiss',   name:'Ham & Swiss',        price:7.95, sq:'SQ-SAND-HAMSWISS', desc:'Ham, swiss, lettuce, tomato, mayo on a hoagie' },
             { id:'sand_hamched',    name:'Ham & Cheddar',      price:7.95, sq:'SQ-SAND-HAMCHED', desc:'Ham & cheddar on sourdough (plain)' },
@@ -291,10 +291,10 @@
             const btns=li.querySelectorAll('button');
             btns[0].addEventListener('click',()=>changeQty(i,-1));
             btns[1].addEventListener('click',()=>changeQty(i,1));
-            // Optional "who's this for" label per cart line — typed value persists, no re-render needed
+            // Optional "who's this for" label per cart line, typed value persists, no re-render needed
             const forInput=document.createElement('input');
             forInput.type='text'; forInput.maxLength=40;
-            forInput.placeholder='For — name (optional)';
+            forInput.placeholder='For, name (optional)';
             forInput.value=c.forName||'';
             forInput.setAttribute('aria-label','Name of person this item is for (optional)');
             forInput.className='mt-1 w-full border border-lb-light rounded px-2 py-1 text-xs font-body focus:outline-none focus:ring-1 focus:ring-lb-red';
@@ -323,7 +323,7 @@
             const dt=new Date(today); dt.setDate(today.getDate()+d);
             const o=document.createElement('option');
             o.value=dt.toISOString().slice(0,10);
-            o.textContent=(d===0?'Today — ':d===1?'Tomorrow — ':'')+dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+            o.textContent=(d===0?'Today, ':d===1?'Tomorrow, ':'')+dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
             sel.appendChild(o);
         }
         sel.addEventListener('change', buildSlots);
@@ -353,7 +353,7 @@
                 wrap.appendChild(b);
             }
         }
-        if(!wrap.children.length){ wrap.innerHTML='<p class="col-span-3 text-xs text-lb-ink/50">No pickup slots left today — pick tomorrow.</p>'; }
+        if(!wrap.children.length){ wrap.innerHTML='<p class="col-span-3 text-xs text-lb-ink/50">No pickup slots left today, pick tomorrow.</p>'; }
         validate();
     }
 
@@ -369,7 +369,7 @@
 
     function orderPayload(){
         return {
-            brand:'The Lunchbox', location:'Coyote\'s — 805 N Main St, Moab UT',
+            brand:'The Lunchbox', location:'Coyote\'s, 805 N Main St, Moab UT',
             customer:{ name:document.getElementById('custName').value, phone:document.getElementById('custPhone').value },
             pickup, items:cart, subtotal:subtotal(), tax:+(subtotal()*TAX_RATE).toFixed(2),
             total:+(subtotal()*(1+TAX_RATE)).toFixed(2)
@@ -384,13 +384,13 @@
             return;
         }
         // Fallback: send the order to info@ Square account owner via SMS/email.
-        sendOrder(p, 'Square payment not yet enabled — order sent for pay-at-pickup.');
+        sendOrder(p, 'Square payment not yet enabled, order sent for pay-at-pickup.');
     }
     function payAtPickup(){ sendOrder(orderPayload(), 'Order sent. Pay at the counter on pickup.'); }
 
     function sendOrder(p, msg){
         notifyShop(p); // server-side email + text alert, independent of the customer's device
-        const lines = p.items.map(c=>'• '+c.qty+'x '+c.name+(c.forName?' — for '+c.forName.trim():'')+(c.desc?' ('+c.desc+')':'')+' — '+fmt(c.price*c.qty)).join('%0a');
+        const lines = p.items.map(c=>'• '+c.qty+'x '+c.name+(c.forName?', for '+c.forName.trim():'')+(c.desc?' ('+c.desc+')':'')+', '+fmt(c.price*c.qty)).join('%0a');
         const body =
             'NEW LUNCHBOX ORDER%0a'+
             'Name: '+(p.customer.name||'(add name)')+'%0a'+
@@ -413,9 +413,9 @@
 
     loadCart(); renderMenu(); renderCart(); buildDays();
 
-    /* ===== ORDERING PAUSED (added 2026-06-15) — delete this whole block to re-enable ordering ===== */
+    /* ===== ORDERING PAUSED (added 2026-06-15), delete this whole block to re-enable ordering ===== */
     (function(){
-      var PAUSE_MSG = 'We recently opened and are still setting up online ordering. For now, please visit the shop to place a pre-order for any time — Coyote\'s, 805 N Main St, Moab.';
+      var PAUSE_MSG = 'We recently opened and are still setting up online ordering. For now, please visit the shop to place a pre-order for any time, Coyote\'s, 805 N Main St, Moab.';
       var banner = document.createElement('div');
       banner.setAttribute('role','alert');
       banner.style.cssText = 'position:sticky;top:0;z-index:9999;background:#b3261e;color:#fff;font-weight:700;text-align:center;padding:11px 14px;font-family:system-ui,-apple-system,sans-serif;line-height:1.3';
