@@ -341,11 +341,12 @@
     tourDate.min=localISO(_today);
     tourDate.value=localISO(_tmr);
     tourDate.classList.add('ring-2','ring-lb-red','border-lb-red');
-    const openPicker=()=>{ try{ tourDate.showPicker(); }catch(e){} };
+    const clearDateFlag=()=>{ tourDate.classList.remove('ring-2','ring-lb-red','border-lb-red'); if(dateWarn) dateWarn.classList.add('hidden'); };
+    const openPicker=()=>{ clearDateFlag(); try{ tourDate.showPicker(); }catch(e){} };
     tourDate.addEventListener('click',openPicker);
     tourDate.addEventListener('focus',openPicker);
     tourDate.addEventListener('keydown',e=>e.preventDefault());
-    tourDate.addEventListener('change',()=>{ tourDate.classList.remove('ring-2','ring-lb-red','border-lb-red'); if(dateWarn) dateWarn.classList.add('hidden'); validate(); });
+    tourDate.addEventListener('change',()=>{ clearDateFlag(); validate(); });
 
     function items(){
         return rows.map(r=>({
@@ -368,21 +369,20 @@
         if(!validate()) return;
         const name=document.getElementById('guestName').value.trim();
         const phone=document.getElementById('guestPhone').value.trim();
-        const lines=items().map(i=>'• '+i.qty+'x '+(i.byo?('BYO, '+(i.tweak||'(combo not specified)')):i.name)+' on '+i.bread+(!i.byo&&i.tweak?(', '+i.tweak):'')).join('%0a');
+        const lines=items().map(i=>'• '+i.qty+'x '+(i.byo?('BYO, '+(i.tweak||'(combo not specified)')):i.name)+' on '+i.bread+(!i.byo&&i.tweak?(', '+i.tweak):'')).join('\n');
         const notes=document.getElementById('orderNotes').value.trim();
-        const body='SST TOUR LUNCH ORDER%0a'+
-            'Name: '+name+'%0a'+
-            'Phone: '+(phone||'(none)')+'%0a'+
-            'Tour date: '+tourDate.value+'%0a'+
-            'Pickup: Rides with the Sand & Stars tour%0a%0a'+
-            'SANDWICHES:%0a'+lines+(notes?('%0a%0aNotes: '+encodeURIComponent(notes)):'')+ 
-            '%0a%0a(Sent from moablunchbox.com/sst, Sand & Stars partner page)';
-        const sms='sms:'+SS_SMS+'?&body='+body;
-        const mail='mailto:'+ORDER_EMAIL+'?subject='+encodeURIComponent(subjectLine())+'&body='+body;
+        const bodyText='SST TOUR LUNCH ORDER\n'+
+            'Name: '+name+'\n'+
+            'Phone: '+(phone||'(none)')+'\n'+
+            'Tour date: '+tourDate.value+'\n'+
+            'Pickup: Rides with the Sand & Stars tour\n\n'+
+            'SANDWICHES:\n'+lines+(notes?('\n\nNotes: '+notes):'')+
+            '\n\n(Sent from moablunchbox.com/sst)';
+        const mail='mailto:'+ORDER_EMAIL+'?subject='+encodeURIComponent(subjectLine())+'&body='+encodeURIComponent(bodyText);
         const c=document.getElementById('confirmMsg');
         if(c){
-            c.innerHTML='<p class="font-bold mb-1">Order started, thank you!</p>'+
-                '<p class="mb-2">Your email app should open with your order addressed to our kitchen and to Sand &amp; Stars, just hit send. You can also <a class="underline font-semibold" href="'+sms+'">text it to Sand &amp; Stars</a> instead.</p>'+
+            c.innerHTML='<p class="font-bold mb-1">One more step: hit send in your email.</p>'+
+                '<p class="mb-2">Your email opens with the full order addressed to our kitchen and to Sand &amp; Stars. Give it a send and you are all set.</p>'+
                 '<p class="mb-2">If you have more than one tour that includes lunch (full days or picnic add-ons, see invoice for confirmation), please refresh this page and complete another order for the other date(s).</p>'+
                 '<p>If you later wish to make a change, please text Sand &amp; Stars at <a class="underline font-semibold" href="tel:+14356331145">435 633 1145</a> (sometimes impossible on short notice, we will try).</p>';
             c.classList.remove('hidden');
