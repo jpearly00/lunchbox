@@ -124,26 +124,11 @@
         </div>
 
         <!-- HOW IT WORKS -->
-        <section class="py-12 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="font-heading font-black text-2xl md:text-4xl uppercase tracking-tight text-center mb-8">How it works</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl p-6">
-                        <p class="font-heading font-black text-lb-red text-3xl mb-2">1</p>
-                        <h3 class="font-heading font-bold uppercase tracking-wide text-sm mb-2">Order ahead</h3>
-                        <p class="text-sm text-lb-ink/70">Put your order in below, ideally the day before your tour. Go with a menu choice, make a tweak, or build your own.</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-6">
-                        <p class="font-heading font-black text-lb-red text-3xl mb-2">2</p>
-                        <h3 class="font-heading font-bold uppercase tracking-wide text-sm mb-2">We pack it</h3>
-                        <p class="text-sm text-lb-ink/70">Made fresh at Coyote's, 805 N Main St, labeled with your name and tour date, with snacks and drinks packed to go with it.</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-6">
-                        <p class="font-heading font-black text-lb-red text-3xl mb-2">3</p>
-                        <h3 class="font-heading font-bold uppercase tracking-wide text-sm mb-2">It rides with the tour</h3>
-                        <p class="text-sm text-lb-ink/70">Sand &amp; Stars picks it up and brings it along automatically, or the tour stops by Coyote's on the way out. Either way, it's handled.</p>
-                    </div>
-                </div>
+        <section class="py-5 px-4">
+            <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-center">
+                <span class="text-sm text-lb-ink/70"><span class="font-heading font-black text-lb-red">1</span> Order ahead</span>
+                <span class="text-sm text-lb-ink/70"><span class="font-heading font-black text-lb-red">2</span> We pack it fresh</span>
+                <span class="text-sm text-lb-ink/70"><span class="font-heading font-black text-lb-red">3</span> Rides with your tour</span>
             </div>
         </section>
 
@@ -226,38 +211,19 @@
 
                     <div>
                         <p class="text-xs font-heading font-bold uppercase tracking-wide text-lb-ink/60 mb-2">Sandwiches</p>
-                        <div class="space-y-3" id="sandwichRows">
-                            <div class="flex flex-wrap items-center gap-2 border border-lb-light rounded-lg p-3" data-row data-name="Ham &amp; Swiss">
-                                <span class="font-heading font-bold text-sm flex-1 min-w-[120px]">Ham &amp; Swiss</span>
-                                <select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs"><option>Ciabatta roll</option><option>Sliced sourdough</option></select>
-                                <input data-tweak type="text" placeholder="requests (no mayo, add deli mustard…)" class="border border-lb-light rounded-lg px-2 py-1 text-xs flex-1 min-w-[140px]">
-                                <div class="flex items-center gap-2"><button type="button" data-minus class="w-7 h-7 rounded bg-lb-light font-bold">−</button><span data-qty class="text-sm font-bold w-4 text-center">0</span><button type="button" data-plus class="w-7 h-7 rounded bg-lb-light font-bold">+</button></div>
-                            </div>
-                            <div class="flex flex-wrap items-center gap-2 border border-lb-light rounded-lg p-3" data-row data-name="Turkey &amp; Provolone">
-                                <span class="font-heading font-bold text-sm flex-1 min-w-[120px]">Turkey &amp; Provolone</span>
-                                <select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs"><option>Ciabatta roll</option><option>Sliced sourdough</option></select>
-                                <input data-tweak type="text" placeholder="requests" class="border border-lb-light rounded-lg px-2 py-1 text-xs flex-1 min-w-[140px]">
-                                <div class="flex items-center gap-2"><button type="button" data-minus class="w-7 h-7 rounded bg-lb-light font-bold">−</button><span data-qty class="text-sm font-bold w-4 text-center">0</span><button type="button" data-plus class="w-7 h-7 rounded bg-lb-light font-bold">+</button></div>
-                            </div>
-                            <div class="flex flex-wrap items-center gap-2 border border-lb-light rounded-lg p-3" data-row data-name="Veggie Dream">
-                                <span class="font-heading font-bold text-sm flex-1 min-w-[120px]">Veggie Dream</span>
-                                <select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs"><option>Ciabatta roll</option><option>Sliced sourdough</option></select>
-                                <input data-tweak type="text" placeholder="requests" class="border border-lb-light rounded-lg px-2 py-1 text-xs flex-1 min-w-[140px]">
-                                <div class="flex items-center gap-2"><button type="button" data-minus class="w-7 h-7 rounded bg-lb-light font-bold">−</button><span data-qty class="text-sm font-bold w-4 text-center">0</span><button type="button" data-plus class="w-7 h-7 rounded bg-lb-light font-bold">+</button></div>
-                            </div>
-                            <div class="flex flex-wrap items-center gap-2 border border-lb-light rounded-lg p-3" data-row data-name="Italian">
-                                <span class="font-heading font-bold text-sm flex-1 min-w-[120px]">Italian</span>
-                                <select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs"><option>Ciabatta roll</option><option>Sliced sourdough</option></select>
-                                <input data-tweak type="text" placeholder="requests" class="border border-lb-light rounded-lg px-2 py-1 text-xs flex-1 min-w-[140px]">
-                                <div class="flex items-center gap-2"><button type="button" data-minus class="w-7 h-7 rounded bg-lb-light font-bold">−</button><span data-qty class="text-sm font-bold w-4 text-center">0</span><button type="button" data-plus class="w-7 h-7 rounded bg-lb-light font-bold">+</button></div>
-                            </div>
-                            <div class="flex flex-wrap items-center gap-2 border border-lb-light rounded-lg p-3 bg-lb-cream" data-row data-name="Build-Your-Own" data-byo>
-                                <span class="font-heading font-bold text-sm flex-1 min-w-[120px]">Build Your Own</span>
-                                <select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs"><option>Ciabatta roll</option><option>Sliced sourdough</option></select>
-                                <input data-tweak type="text" placeholder="e.g. salami + capicola, provolone, lettuce, deli mustard. Please list everything you want; if it's not listed, it won't be on it." class="border border-lb-light rounded-lg px-2 py-1 text-xs flex-1 min-w-[180px]">
-                                <div class="flex items-center gap-2"><button type="button" data-minus class="w-7 h-7 rounded bg-lb-light font-bold">−</button><span data-qty class="text-sm font-bold w-4 text-center">0</span><button type="button" data-plus class="w-7 h-7 rounded bg-lb-light font-bold">+</button></div>
-                            </div>
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <select id="addPick" class="flex-1 min-w-[160px] border border-lb-light rounded-lg px-3 py-2 text-sm">
+                                <option value="">Add a sandwich…</option>
+                                <option>Ham &amp; Swiss</option>
+                                <option>Turkey &amp; Provolone</option>
+                                <option>Veggie Dream</option>
+                                <option>Italian</option>
+                                <option>Build Your Own</option>
+                            </select>
+                            <button type="button" id="addBtn" class="bg-lb-ink hover:bg-lb-red text-white font-heading font-bold uppercase tracking-wide text-sm px-5 py-2 rounded-lg transition">Add</button>
                         </div>
+                        <div id="sandwiches" class="space-y-3"></div>
+                        <p id="emptyHint" class="text-sm text-lb-ink/50 mt-1">No sandwiches yet. Pick one above and hit Add. Each sandwich is customized on its own (bread, name, requests), so a Ham &amp; Swiss on ciabatta and one on sourdough are just two adds, or hit Copy and switch the bread.</p>
                     </div>
 
                     <div>
@@ -328,12 +294,56 @@
     const tgl=document.getElementById('mobile-menu-toggle'), mm=document.getElementById('mobile-menu');
     tgl.addEventListener('click',()=>{const o=!mm.classList.contains('hidden');mm.classList.toggle('hidden');tgl.setAttribute('aria-expanded',String(!o));});
 
-    const rows=[...document.querySelectorAll('[data-row]')];
-    rows.forEach(r=>{
-        const qtyEl=r.querySelector('[data-qty]');
-        r.querySelector('[data-plus]').addEventListener('click',()=>{qtyEl.textContent=+qtyEl.textContent+1;validate();});
-        r.querySelector('[data-minus]').addEventListener('click',()=>{qtyEl.textContent=Math.max(0,+qtyEl.textContent-1);validate();});
-    });
+    // Per-sandwich builder: each added sandwich is its own line (bread, name, requests). No quantities.
+    const BREADS = ['Ciabatta roll','Sliced sourdough'];
+    const REQ_PH = 'requests (no mayo, add deli mustard…)';
+    const BYO_PH = 'List everything you want (e.g. salami + capicola, provolone, lettuce, deli mustard). If it is not listed, it will not be on it.';
+    const sandwichesEl = document.getElementById('sandwiches');
+    const emptyHint = document.getElementById('emptyHint');
+    const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+
+    function readCard(card){
+        const r2 = card.querySelector('[data-req2]');
+        return {
+            forName: (card.querySelector('[data-for]').value||'').trim(),
+            bread: card.querySelector('[data-bread]').value,
+            req: (card.querySelector('[data-req]').value||'').trim(),
+            req2: r2 ? (r2.value||'').trim() : ''
+        };
+    }
+    function makeCard(type, pf){
+        pf = pf || {};
+        const byo = /build your own/i.test(type);
+        const card = document.createElement('div');
+        card.className = 'border border-lb-light rounded-lg p-3 space-y-2' + (byo ? ' bg-lb-cream' : '');
+        card.dataset.card = '1'; card.dataset.name = type; card.dataset.byo = byo ? '1' : '0';
+        const breadOpts = BREADS.map(b=>'<option'+(pf.bread===b?' selected':'')+'>'+b+'</option>').join('');
+        card.innerHTML =
+            '<div class="flex items-center justify-between gap-2">'+
+              '<span class="font-heading font-black uppercase tracking-tight text-sm">'+esc(type)+'</span>'+
+              '<div class="flex items-center gap-3">'+
+                '<button type="button" data-copy class="text-xs font-heading font-bold uppercase tracking-wide text-lb-ink/60 hover:text-lb-red">Copy</button>'+
+                '<button type="button" data-remove class="text-xs font-heading font-bold uppercase tracking-wide text-lb-red">Remove</button>'+
+              '</div>'+
+            '</div>'+
+            '<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">'+
+              '<input data-for type="text" placeholder="For (name)" value="'+esc(pf.forName)+'" class="border border-lb-light rounded-lg px-2 py-1 text-xs">'+
+              '<select data-bread class="border border-lb-light rounded-lg px-2 py-1 text-xs">'+breadOpts+'</select>'+
+              '<input data-req type="text" placeholder="'+(byo?'extra requests':REQ_PH)+'" value="'+esc(pf.req)+'" class="border border-lb-light rounded-lg px-2 py-1 text-xs">'+
+            '</div>'+
+            (byo ? '<input data-req2 type="text" placeholder="'+BYO_PH+'" value="'+esc(pf.req2)+'" class="w-full border border-lb-light rounded-lg px-2 py-1 text-xs">' : '');
+        card.querySelector('[data-remove]').addEventListener('click',()=>{ card.remove(); refresh(); });
+        card.querySelector('[data-copy]').addEventListener('click',()=>{ addCard(type, readCard(card)); });
+        card.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',validate));
+        return card;
+    }
+    function addCard(type, pf){ if(!type) return; sandwichesEl.appendChild(makeCard(type, pf)); refresh(); }
+    function refresh(){ if(emptyHint) emptyHint.style.display = sandwichesEl.children.length ? 'none' : 'block'; validate(); }
+
+    const addPick = document.getElementById('addPick');
+    const doAdd = ()=>{ if(addPick.value){ addCard(addPick.value); addPick.value=''; } };
+    document.getElementById('addBtn').addEventListener('click', doAdd);
+    addPick.addEventListener('change', doAdd);
 
     const tourDate=document.getElementById('tourDate');
     const dateWarn=document.getElementById('dateWarn');
@@ -349,12 +359,14 @@
     tourDate.addEventListener('change',()=>{ clearDateFlag(); validate(); });
 
     function items(){
-        return rows.map(r=>({
-            name:r.dataset.name, qty:+r.querySelector('[data-qty]').textContent,
-            bread:r.querySelector('[data-bread]').value, tweak:r.querySelector('[data-tweak]').value.trim(), byo:'byo' in r.dataset
-        })).filter(i=>i.qty>0);
+        return [...sandwichesEl.querySelectorAll('[data-card]')].map(card=>{
+            const byo = card.dataset.byo==='1';
+            const d = readCard(card);
+            const req = byo ? [d.req, d.req2].filter(Boolean).join('; ') : d.req;
+            return { name: card.dataset.name, byo, forName: d.forName, bread: d.bread, req };
+        });
     }
-    function totalQty(){ return items().reduce((s,i)=>s+i.qty,0); }
+    function totalQty(){ return items().length; }
     function lastName(full){ const p=(full||'').trim().split(/\s+/); return p.length>1?p[p.length-1]:(p[0]||''); }
     function subjectLine(){ let dp=''; if(tourDate.value){ const d=new Date(tourDate.value+'T00:00:00'); dp=MONTHS[d.getMonth()]+' '+pad(d.getDate())+' '; } return dp+totalQty()+'x '+lastName(document.getElementById('guestName').value)+' SST Food Order'; }
     function validate(){
@@ -369,7 +381,7 @@
         if(!validate()) return;
         const name=document.getElementById('guestName').value.trim();
         const phone=document.getElementById('guestPhone').value.trim();
-        const lines=items().map(i=>'• '+i.qty+'x '+(i.byo?('BYO, '+(i.tweak||'(combo not specified)')):i.name)+' on '+i.bread+(!i.byo&&i.tweak?(', '+i.tweak):'')).join('\n');
+        const lines=items().map(i=>'• '+i.name+(i.forName?(' (for '+i.forName+')'):'')+' on '+i.bread+(i.req?(': '+i.req):'')).join('\n');
         const notes=document.getElementById('orderNotes').value.trim();
         const bodyText='SST TOUR LUNCH ORDER\n'+
             'Name: '+name+'\n'+
@@ -390,7 +402,7 @@
         }
         window.location.href=mail;
     });
-    validate();
+    refresh();
     </script>
 <!-- consent banner (self-hosted, EU-only, free) -->
 <style>
