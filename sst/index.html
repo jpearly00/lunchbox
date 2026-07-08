@@ -372,13 +372,39 @@
     function validate(){
         const ok = items().length>0 && document.getElementById('guestName').value.trim() && tourDate.value;
         document.getElementById('sendOrderBtn').disabled=!ok;
-        document.getElementById('orderNote').textContent = ok ? 'Ready, sends from your phone or email app.' : 'Add a name, tour date, and at least one sandwich.';
+        document.getElementById('orderNote').textContent = ok ? 'Ready to send.' : 'Add your name, a tour date, and at least one sandwich.';
         return ok;
     }
     ['guestName','guestPhone','tourDate'].forEach(id=>document.getElementById(id).addEventListener('input',validate));
 
-    document.getElementById('sendOrderBtn').addEventListener('click',()=>{
+    const WORKER_URL = 'https://lunchbox-order.jpearly.workers.dev';
+    function showSubmitted(){
+        const ov=document.createElement('div');
+        ov.className='fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4';
+        ov.innerHTML='<div class="bg-white rounded-xl max-w-md w-full p-6 text-lb-ink" style="border:3px solid #000; box-shadow:8px 8px 0 #000;">'+
+            '<p class="font-heading font-black uppercase tracking-tight text-2xl text-lb-red mb-3">Order submitted!</p>'+
+            '<div class="space-y-3 text-sm">'+
+                '<p>Thanks! Your tour lunch order is on its way to our kitchen and to Sand &amp; Stars. Nothing else to do.</p>'+
+                '<p>If you have more than one tour that includes lunch (full days or picnic add-ons, see invoice for confirmation), refresh this page and complete another order for the other date(s).</p>'+
+                '<p>To change an order, text Sand &amp; Stars at <a class="underline font-semibold" href="tel:+14356331145">435 633 1145</a> (sometimes impossible on short notice, we will try).</p>'+
+            '</div>'+
+            '<button type="button" data-close class="mt-5 w-full bg-lb-ink text-white font-heading font-bold uppercase tracking-wide px-6 py-3 rounded-lg">Close</button>'+
+            '</div>';
+        ov.addEventListener('click',e=>{ if(e.target===ov||e.target.hasAttribute('data-close')) ov.remove(); });
+        document.body.appendChild(ov);
+    }
+    function showError(){
+        const c=document.getElementById('confirmMsg');
+        if(c){
+            c.className='rounded-lg border-2 border-lb-red bg-lb-red/10 text-lb-ink p-4 text-sm';
+            c.innerHTML='<p class="font-bold mb-1">That did not go through.</p>'+
+                '<p>Please call or text us at <a class="underline font-semibold" href="tel:+14356331145">435 633 1145</a> and we will take your order directly. Sorry about that.</p>';
+            c.classList.remove('hidden'); c.scrollIntoView({behavior:'smooth',block:'center'});
+        }
+    }
+    document.getElementById('sendOrderBtn').addEventListener('click', async ()=>{
         if(!validate()) return;
+        const btn=document.getElementById('sendOrderBtn');
         const name=document.getElementById('guestName').value.trim();
         const phone=document.getElementById('guestPhone').value.trim();
         const lines=items().map(i=>'• '+i.name+(i.forName?(' (for '+i.forName+')'):'')+' on '+i.bread+(i.req?(': '+i.req):'')).join('\n');
@@ -389,18 +415,16 @@
             'Tour date: '+tourDate.value+'\n'+
             'Pickup: Rides with the Sand & Stars tour\n\n'+
             'SANDWICHES:\n'+lines+(notes?('\n\nNotes: '+notes):'')+
-            '\n\n(Sent from moablunchbox.com/sst)';
-        const mail='mailto:'+ORDER_EMAIL+'?subject='+encodeURIComponent(subjectLine())+'&body='+encodeURIComponent(bodyText);
-        const c=document.getElementById('confirmMsg');
-        if(c){
-            c.innerHTML='<p class="font-bold mb-1">One more step: hit send in your email.</p>'+
-                '<p class="mb-2">Your email opens with the full order addressed to our kitchen and to Sand &amp; Stars. Give it a send and you are all set.</p>'+
-                '<p class="mb-2">If you have more than one tour that includes lunch (full days or picnic add-ons, see invoice for confirmation), please refresh this page and complete another order for the other date(s).</p>'+
-                '<p>If you later wish to make a change, please text Sand &amp; Stars at <a class="underline font-semibold" href="tel:+14356331145">435 633 1145</a> (sometimes impossible on short notice, we will try).</p>';
-            c.classList.remove('hidden');
-            c.scrollIntoView({behavior:'smooth',block:'center'});
-        }
-        window.location.href=mail;
+            '\n\n(Submitted from moablunchbox.com/sst)';
+        const orig=btn.textContent; btn.disabled=true; btn.textContent='Sending…';
+        let ok=false;
+        try{
+            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({subject:subjectLine(),body:bodyText})});
+            const j=await r.json().catch(()=>({}));
+            ok = r.ok && j && j.ok;
+        }catch(e){ ok=false; }
+        btn.textContent=orig;
+        if(ok){ showSubmitted(); } else { btn.disabled=false; showError(); }
     });
     refresh();
     </script>
