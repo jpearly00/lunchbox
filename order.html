@@ -148,7 +148,7 @@
                     <select id="pickupDay" class="w-full border border-lb-light rounded-lg px-3 py-2 mb-3 font-body focus:outline-none focus:ring-2 focus:ring-lb-red"></select>
                     <label class="block text-xs font-semibold text-lb-ink/60 mb-1">Time slot</label>
                     <div id="slots" class="grid grid-cols-3 gap-2"></div>
-                    <p class="text-xs text-lb-ink/45 mt-2">Pickup 6:00 AM–3:00 PM daily. Same-day orders need 30 min lead time.</p>
+                    <p class="text-xs text-lb-ink/45 mt-2">Pickup 7:00 AM–3:00 PM daily. Same-day orders need 30 min lead time.</p>
                 </div>
 
                 <!-- Contact -->
@@ -189,7 +189,8 @@
             <div>
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-lb-red mb-3">Pickup</h3>
                 <ul class="space-y-1 text-sm text-white/80 font-body">
-                    <li>Daily: 6am – 3pm</li>
+                    <li>Grab &amp; Go: daily 7am–3pm</li>
+                    <li>Made-to-order: Thu–Sun 11am–1pm</li>
                     <li>805 N Main St, Moab, UT 84532</li>
                     <li><a href="tel:+14352636669" class="hover:text-lb-red transition">(435) 263-6669</a></li>
                     <li><a href="contact.html" class="hover:text-lb-red transition">Contact us</a></li>
@@ -344,7 +345,7 @@
         const wrap=document.getElementById('slots'); wrap.innerHTML='';
         const now=new Date();
         const isToday = day===now.toISOString().slice(0,10);
-        for(let mins=6*60; mins<=15*60; mins+=15){   // 6:00 AM through 3:00 PM, 15-min slots
+        for(let mins=7*60; mins<=15*60; mins+=15){   // 6:00 AM through 3:00 PM, 15-min slots
             {
                 const h=Math.floor(mins/60), m=mins%60;
                 const slotDate=new Date(day+'T'+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':00');
