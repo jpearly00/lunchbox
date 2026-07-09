@@ -345,6 +345,38 @@
             mobileMenu.setAttribute('aria-hidden', String(isOpen));
         });
     </script>
+<!-- Live menu: render from the Menu Manager feed (/v1/menu.json). Hardcoded cards above are the fallback. Wired 260709. -->
+<script>
+(async function(){
+  try{
+    const FEED='https://lunchbox-menu.jpearly.workers.dev/v1/menu.json';
+    const res=await fetch(FEED,{cache:'no-store'});
+    if(!res.ok) return;
+    const data=await res.json();
+    const items=(data.items||[]).filter(i=>i.category==='sandwich');
+    if(!items.length) return; // keep hardcoded fallback if feed empty
+    const grid=document.querySelector('#sandwiches .grid');
+    if(!grid) return;
+    const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const badge=(t,cls)=>`<span class="inline-block mt-2 mr-1 text-xs font-semibold ${cls} px-2 py-0.5 rounded-full">${t}</span>`;
+    grid.innerHTML=items.map(function(it){
+      const img=it.thumbnail?(String(it.thumbnail).startsWith('http')?it.thumbnail:String(it.thumbnail).replace(/^\//,'')):'images/sandwiches.jpg';
+      const d=(it.dietary||[]).map(x=>String(x).toLowerCase());
+      let b='';
+      if(d.includes('vegetarian')) b+=badge('Vegetarian','bg-green-100 text-green-800');
+      if(d.includes('vegan')) b+=badge('Vegan','bg-green-100 text-green-800');
+      if(d.includes('gf')||d.includes('gluten-free')) b+=badge('GF','bg-amber-100 text-amber-800');
+      const price=(Number(it.price)||0).toFixed(2);
+      return '<article class="bg-clean-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row" data-item-id="'+esc(it.id)+'" data-category="sandwiches" data-price="'+esc(price)+'" data-name="'+esc(it.title)+'" data-square-id="'+esc(it.square_id||'')+'">'
+        +'<img src="'+esc(img)+'" alt="'+esc(it.title)+'" class="w-full sm:w-40 h-40 sm:h-auto object-cover" loading="lazy" width="160" height="160">'
+        +'<div class="p-4 flex-1"><div class="flex justify-between items-start mb-1">'
+        +'<h3 class="font-heading font-bold text-lg text-night-rock">'+esc(it.title)+'</h3>'
+        +'<span class="font-heading font-semibold text-lg text-auburn ml-2" data-price-value="'+esc(price)+'">$'+price+'</span></div>'
+        +'<p class="font-body text-sm text-night-rock/70">'+esc(it.description)+'</p>'+b+'</div></article>';
+    }).join('');
+  }catch(e){/* keep hardcoded fallback */}
+})();
+</script>
 <!-- consent banner (self-hosted, EU-only, free) -->
 <style>
 #cc-banner{position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;max-width:560px;margin:0 auto;background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;padding:14px 16px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.45;display:none}
