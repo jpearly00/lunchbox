@@ -374,25 +374,25 @@
     setByText('li', /Made-to-order:/i, S.picnic_hours_text);
     // explainer
     const main=document.querySelector('main');
-    if(main && !document.getElementById('lb-pickup-explainer')){
-      const box=document.createElement('div'); box.id='lb-pickup-explainer';
-      box.className='mb-8 bg-clean-white rounded-xl p-4 border-2 border-black';
-      box.innerHTML='<div class="font-heading font-bold text-lg text-auburn mb-2">Two ways to get your food</div>'
-        +'<div class="space-y-3 text-sm text-night-rock/80">'
-        +'<div><b>Picnic</b> &mdash; grab &amp; go, 7 days a week at Coyote\'s'+(S.coyotes_hours_text?(' ('+esc(S.coyotes_hours_text)+')'):'')+'. Trail-friendly and keeps great. Want a group order with your name and custom picks? <b>Pre-order</b> and we\'ll label it in the fridge at Coyote\'s &mdash; give your name and it\'s ready when you arrive.</div>'
-        +'<div><b>Window</b> &mdash; made to order and ready right away'+(S.window_hours_text?(' ('+esc(S.window_hours_text)+')'):'')+'. <b>Window pre-order</b> skips the wait. Patio or grab &amp; go.</div>'
-        +'</div>'
-        +'<div class="text-sm text-night-rock/80 mt-3"><b>Want both?</b> Order Window and Picnic as two quick separate orders &mdash; two spots right next door: hot subs at the Lunchbox window out front, cold picnic &amp; drinks inside Coyote\'s.</div>'
-        +'<div class="text-xs text-night-rock/60 mt-1">All at 805 N Main St, Moab.</div>';
+    if(main && !document.getElementById('lb-menu-title')){
+      const box=document.createElement('div'); box.id='lb-menu-title';
+      box.className='mb-6 text-center';
+      box.innerHTML='<h2 class="font-heading font-black text-2xl md:text-3xl text-auburn uppercase tracking-tight leading-tight">Two menus to order from</h2>'
+        +'<p class="font-body text-night-rock/75 mt-1">Each with order-ahead online &mdash; pick a tab below.</p>';
       main.insertBefore(box, main.firstChild);
     }
     if(P.length && main && !document.getElementById('lb-promos')){ const w=document.createElement('div'); w.id='lb-promos'; w.className='mb-8 space-y-2';
-      w.innerHTML=P.map(p=>`<div class="bg-sunset/10 border-2 border-auburn/40 rounded-xl p-4"><div class="font-heading font-bold text-auburn">${esc(p.title)}</div>${p.body?`<div class="text-sm text-night-rock/70">${esc(p.body)}</div>`:''}</div>`).join(''); const ex=document.getElementById('lb-pickup-explainer'); main.insertBefore(w, ex?ex.nextSibling:main.firstChild); }
+      w.innerHTML=P.map(p=>`<div class="bg-sunset/10 border-2 border-auburn/40 rounded-xl p-4"><div class="font-heading font-bold text-auburn">${esc(p.title)}</div>${p.body?`<div class="text-sm text-night-rock/70">${esc(p.body)}</div>`:''}</div>`).join(''); const ex=document.getElementById('lb-menu-title'); main.insertBefore(w, ex?ex.nextSibling:main.firstChild); }
     // tabs
     let TAB='picnic', pillEl=null;
+    // Per-tab intro copy — the two ordering methods live at the top of their own menu tab (no separate section)
+    const TABMETA={
+      picnic:{ h:'Everyday Grab &amp; Go / Picnic Quick Bites', l1:'Ready-made 7 days a week inside Coyote\'s Outpost', l2:'Groups encouraged to pre-order' },
+      window:{ h:'Made-to-Order Walk-Up Window', l1:'BBQ &amp; specialty subs, sides, &amp; drinks', l2:'Special hours, several days a week' }
+    };
     const tabs=document.createElement('div'); tabs.className='flex gap-2 mb-6';
     function mk(k,l){ const b=document.createElement('button'); b.dataset.tab=k; b.textContent=l; return b; }
-    const bP=mk('picnic','Picnic Menu'), bW=mk('window','Window');
+    const bP=mk('picnic','Grab & Go'), bW=mk('window','Walk-Up Window');
     tabs.appendChild(bP); tabs.appendChild(bW);
     (desc||h2).insertAdjacentElement('afterend', tabs);
     function card(it){
@@ -413,8 +413,9 @@
     }
     function render(){
       [[bP,'picnic'],[bW,'window']].forEach(([b,k])=>{ b.className='font-heading font-bold uppercase tracking-wide text-sm px-5 py-2 rounded-full transition border-2 border-black '+(k===TAB?'bg-auburn text-clean-white':'bg-clean-white text-night-rock'); });
-      if(h2) h2.textContent = TAB==='window'?'Window Menu':'Picnic Menu';
-      if(desc) desc.textContent = TAB==='window'?'Hot, made-to-order subs at the Lunchbox window.':'Grab & go, keeps great on the trail. Pick up at Coyote\'s.';
+      const meta=TABMETA[TAB];
+      if(h2) h2.innerHTML = meta.h;
+      if(desc) desc.innerHTML = meta.l1+'<br>'+meta.l2+' &middot; <b class="text-lb-go">Order ahead online</b>';
       const list=all.filter(i=>(i.service||['picnic']).includes(TAB)).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
       grid.innerHTML=list.length?list.map(card).join(''):'<p class="font-body text-night-rock/60">Nothing on this menu yet.</p>';
       if(pillEl){ pillEl.remove(); pillEl=null; }
