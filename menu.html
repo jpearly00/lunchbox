@@ -402,7 +402,7 @@
       const m=now.getHours()*60+now.getMinutes(); return m>=(oh*60+om)&&m<(ch*60+cm);
     }catch(e){ return true; } }
     const sec=document.querySelector('#sandwiches'), h2=sec&&sec.querySelector('h2');
-    if(h2){
+    if(h2 && (data.items||[]).some(function(i){return (i.service||[]).includes('window');})){
       const open=windowOpen();
       const pill=document.createElement('div');
       pill.className='inline-block mb-4 text-sm font-bold px-3 py-1.5 rounded-full '+(open?'bg-green-100 text-green-800':'bg-red-100 text-red-800');
@@ -430,11 +430,11 @@
       const box=document.createElement('div'); box.id='lb-pickup-explainer';
       box.className='mb-8 bg-clean-white rounded-xl p-4 border-2 border-black';
       box.innerHTML='<div class="font-heading font-bold text-lg text-auburn mb-2">Two ways to get your food</div>'
-        +'<ul class="space-y-1 text-sm text-night-rock/80">'
-        +'<li><b>Window</b> (hot, made-to-order): pick up at the Lunchbox window'+(S.window_hours_text?(' &mdash; '+esc(S.window_hours_text)):'')+'.</li>'
-        +'<li><b>Picnic</b> (grab &amp; go): pick up at Coyote\'s, all day'+(S.coyotes_hours_text?(' &mdash; '+esc(S.coyotes_hours_text)):(S.picnic_hours_text?(' &mdash; '+esc(S.picnic_hours_text)):''))+'.</li>'
-        +'</ul>'
-        +'<div class="text-xs text-night-rock/60 mt-2">Same spot: 805 N Main St, Moab.'+(poOn?' Pre-order ahead on eligible items.':'')+'</div>';
+        +'<div class="space-y-3 text-sm text-night-rock/80">'
+        +'<div><b>Picnic</b> &mdash; grab &amp; go, 7 days a week at Coyote\'s'+(S.coyotes_hours_text?(' ('+esc(S.coyotes_hours_text)+')'):'')+'. Trail- and pulley-friendly and keeps great. Want a group order with your name and custom picks? <b>Pre-order</b> and we\'ll label it in the fridge at the main Coyote\'s shop &mdash; just give your name and it\'s ready when you arrive.</div>'
+        +'<div><b>Window</b> &mdash; the same menu as the walk-up window, made to order and ready to enjoy right away'+(S.window_hours_text?(' ('+esc(S.window_hours_text)+')'):'')+'. <b>Window pre-order</b> lets you skip the wait. Patio or grab &amp; go.</div>'
+        +'</div>'
+        +'<div class="text-xs text-night-rock/60 mt-3">Both at 805 N Main St, Moab, next to Coyote\'s Outpost.</div>';
       main.insertBefore(box, main.firstChild);
     }
     document.querySelectorAll('#sandwiches article[data-item-id]').forEach(function(a){
