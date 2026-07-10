@@ -416,6 +416,40 @@
   }catch(e){}
 })();
 </script>
+<!-- Pickup clarity: Window = Lunchbox window (hot, window hours); Picnic = Coyote's, grab-and-go all day -->
+<script>
+(async function(){
+  try{
+    const r=await fetch('https://lunchbox-menu.jpearly.workers.dev/v1/menu.json',{cache:'no-store'});
+    if(!r.ok) return; const data=await r.json();
+    const S=data.settings||{}; const byId={}; (data.items||[]).forEach(i=>byId[i.id]=i);
+    const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const poOn=String(S.preorder_enabled||'0')==='1';
+    const main=document.querySelector('main');
+    if(main && !document.getElementById('lb-pickup-explainer')){
+      const box=document.createElement('div'); box.id='lb-pickup-explainer';
+      box.className='mb-8 bg-clean-white rounded-xl p-4 border-2 border-black';
+      box.innerHTML='<div class="font-heading font-bold text-lg text-auburn mb-2">Two ways to get your food</div>'
+        +'<ul class="space-y-1 text-sm text-night-rock/80">'
+        +'<li><b>Window</b> (hot, made-to-order): pick up at the Lunchbox window'+(S.window_hours_text?(' &mdash; '+esc(S.window_hours_text)):'')+'.</li>'
+        +'<li><b>Picnic</b> (grab &amp; go): pick up at Coyote\'s, all day'+(S.coyotes_hours_text?(' &mdash; '+esc(S.coyotes_hours_text)):(S.picnic_hours_text?(' &mdash; '+esc(S.picnic_hours_text)):''))+'.</li>'
+        +'</ul>'
+        +'<div class="text-xs text-night-rock/60 mt-2">Same spot: 805 N Main St, Moab.'+(poOn?' Pre-order ahead on eligible items.':'')+'</div>';
+      main.insertBefore(box, main.firstChild);
+    }
+    document.querySelectorAll('#sandwiches article[data-item-id]').forEach(function(a){
+      const it=byId[a.getAttribute('data-item-id')]; if(!it) return;
+      const box=a.querySelector('.p-4'); if(!box || box.querySelector('.lb-pickup')) return;
+      const svc=it.service||[]; const bits=[];
+      if(svc.includes('window')) bits.push('Window: at the Lunchbox window');
+      if(svc.includes('picnic')) bits.push("Picnic: grab &amp; go at Coyote's");
+      const line=document.createElement('div'); line.className='lb-pickup mt-2 text-xs text-night-rock/60';
+      line.innerHTML=bits.join(' &middot; ')+((poOn&&it.preorderable)?' &middot; <span class="font-semibold text-lb-go">Pre-order ok</span>':'');
+      box.appendChild(line);
+    });
+  }catch(e){}
+})();
+</script>
 <!-- consent banner (self-hosted, EU-only, free) -->
 <style>
 #cc-banner{position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;max-width:560px;margin:0 auto;background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;padding:14px 16px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.45;display:none}
