@@ -396,7 +396,8 @@
     tabs.appendChild(bP); tabs.appendChild(bW);
     (desc||h2).insertAdjacentElement('afterend', tabs);
     function card(it){
-      const img=it.thumbnail?(String(it.thumbnail).startsWith('http')?it.thumbnail:String(it.thumbnail).replace(/^\//,'')):'images/sandwiches.jpg';
+      const raw=it.thumbnail?String(it.thumbnail):'';
+      const img=raw?(raw.startsWith('http')?raw:raw.replace(/^\//,'')):'';
       const d=(it.dietary||[]).map(x=>String(x).toLowerCase()); let b='';
       if(d.includes('vegetarian')) b+=badge('Vegetarian','bg-green-100 text-green-800');
       if(d.includes('gf')||d.includes('gluten-free')) b+=badge('GF','bg-amber-100 text-amber-800');
@@ -404,7 +405,7 @@
       const pickup=TAB==='window'?'Window: at the Lunchbox window':"Picnic: grab &amp; go at Coyote's";
       const pre=(poOn&&it.preorderable)?' &middot; <span class="font-semibold text-lb-go">Pre-order ok</span>':'';
       return '<article class="bg-clean-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row" data-item-id="'+esc(it.id)+'" data-category="sandwiches" data-price="'+esc(price)+'" data-name="'+esc(it.title)+'">'
-        +'<img src="'+esc(img)+'" alt="'+esc(it.title)+'" class="w-full sm:w-40 h-40 sm:h-auto object-cover" loading="lazy" width="160" height="160">'
+        +(img?('<img src="'+esc(img)+'" alt="'+esc(it.title)+'" class="w-full sm:w-40 h-40 sm:h-auto object-cover" loading="lazy" width="160" height="160">'):('<div class="w-full sm:w-40 h-40 flex-shrink-0 flex items-center justify-center bg-lb-ink text-clean-white p-2 text-center"><span class="font-heading font-bold uppercase text-xs tracking-wide leading-tight">'+esc(it.title)+'<br><span class="text-lb-red">Photo coming soon</span></span></div>'))
         +'<div class="p-4 flex-1"><div class="flex justify-between items-start mb-1">'
         +'<h3 class="font-heading font-bold text-lg text-night-rock">'+esc(it.title)+'</h3>'
         +'<span class="font-heading font-semibold text-lg text-auburn ml-2" data-price-value="'+esc(price)+'">$'+price+'</span></div>'
