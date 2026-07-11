@@ -316,7 +316,7 @@
                         <img src="images/logo.jpg" alt="Coyote's logo" class="h-6 w-6 rounded" width="1024" height="1008">
                         <span class="font-heading font-bold text-clean-white text-sm">Coyote's</span>
                     </div>
-                    <p class="font-body text-xs text-cream/70">Gear, gifts, coffee & ice cream. Our home base.</p>
+                    <p class="font-body text-xs text-cream/70">Our sister store — gear, gifts, coffee, ice cream, and a lot of your desert needs.</p>
                 </a>
             </div>
         </div>
@@ -390,6 +390,9 @@
       b.innerHTML='<span class="block text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.2em] opacity-70">'+m.n+'&nbsp;&mdash;</span><span class="block font-heading font-black uppercase tracking-tight text-base md:text-xl leading-none">'+m.label+'</span>'; return b; }
     const bP=mk('picnic'), bW=mk('window');
     strip.appendChild(bP); strip.appendChild(bW);
+    const orderBtn=document.createElement('a'); orderBtn.href='/orders'; orderBtn.textContent='Order Ahead →';
+    orderBtn.className='ml-auto self-center bg-lb-red text-clean-white font-heading font-bold uppercase tracking-wide text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 rounded-lg border-2 border-black shadow-[3px_3px_0_#000] hover:bg-lb-red-dark whitespace-nowrap';
+    strip.appendChild(orderBtn);
     sec.insertBefore(strip, h2); sec.insertBefore(panel, h2);
     panel.appendChild(h2); panel.appendChild(desc); panel.appendChild(grid);
     function card(it){
