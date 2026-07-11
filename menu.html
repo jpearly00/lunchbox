@@ -347,7 +347,7 @@
     const res=await fetch('https://lunchbox-menu.jpearly.workers.dev/v1/menu.json',{cache:'no-store'});
     if(!res.ok) return;
     const data=await res.json(); const S=data.settings||{}, P=data.promos||[];
-    const all=(data.items||[]).filter(i=>i.category==='sandwich');
+    const all=(data.items||[]);
     if(!all.length) return;
     const sec=document.querySelector('#sandwiches'); if(!sec) return;
     const grid=sec.querySelector('.grid'); if(!grid) return;
@@ -400,15 +400,18 @@
       const d=(it.dietary||[]).map(x=>String(x).toLowerCase()); let b='';
       if(d.includes('vegetarian')) b+=badge('Vegetarian','bg-green-100 text-green-800');
       if(d.includes('gf')||d.includes('gluten-free')) b+=badge('GF','bg-amber-100 text-amber-800');
-      const price=(Number(it.price)||0).toFixed(2);
+      const priceN=Number(it.price)||0;
+      const priceHtml=priceN>0?'<span class="font-heading font-semibold text-lg text-auburn ml-2" data-price-value="'+priceN.toFixed(2)+'">$'+priceN.toFixed(2)+'</span>':'';
+      const vary=(it.variations||[]);
+      const varyHtml=vary.length?'<p class="mt-1 text-xs text-night-rock/60"><b>Flavors:</b> '+esc(vary.slice(0,5).join(', '))+(vary.length>5?(' + '+(vary.length-5)+' more'):'')+'</p>':'';
       const pickup=TAB==='window'?'Window: at the Lunchbox window':"Picnic: grab &amp; go at Coyote's";
       const pre=(poOn&&it.preorderable)?' &middot; <span class="font-semibold text-lb-go">Pre-order ok</span>':'';
-      return '<article class="bg-clean-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row" data-item-id="'+esc(it.id)+'" data-category="sandwiches" data-price="'+esc(price)+'" data-name="'+esc(it.title)+'">'
+      return '<article class="bg-clean-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row" data-item-id="'+esc(it.id)+'" data-category="'+esc(it.category||'')+'" data-price="'+priceN.toFixed(2)+'" data-name="'+esc(it.title)+'">'
         +(img?('<img src="'+esc(img)+'" alt="'+esc(it.title)+'" class="w-full sm:w-40 h-40 sm:h-auto object-cover" loading="lazy" width="160" height="160">'):('<div class="w-full sm:w-40 h-40 flex-shrink-0 flex items-center justify-center bg-lb-ink text-clean-white p-2 text-center"><span class="font-heading font-bold uppercase text-xs tracking-wide leading-tight">'+esc(it.title)+'<br><span class="text-lb-red">Photo coming soon</span></span></div>'))
         +'<div class="p-4 flex-1"><div class="flex justify-between items-start mb-1">'
         +'<h3 class="font-heading font-bold text-lg text-night-rock">'+esc(it.title)+'</h3>'
-        +'<span class="font-heading font-semibold text-lg text-auburn ml-2" data-price-value="'+esc(price)+'">$'+price+'</span></div>'
-        +'<p class="font-body text-sm text-night-rock/70">'+esc(it.description)+'</p>'+b
+        +priceHtml+'</div>'
+        +'<p class="font-body text-sm text-night-rock/70">'+esc(it.description)+'</p>'+varyHtml+b
         +'<div class="mt-2 text-xs text-night-rock/60">'+pickup+pre+'</div></div></article>';
     }
     function render(){
