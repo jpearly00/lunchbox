@@ -248,8 +248,8 @@
         <section id="sides" class="mb-16" data-category="sides">
             <h2 class="font-heading font-bold text-2xl md:text-3xl text-auburn mb-2">Snacks &amp; Sides</h2>
     <div class="bg-cream/60 border border-dashed border-auburn/40 rounded-xl p-8 text-center">
-      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">Coming Soon Online</p>
-      <p class="font-body text-night-rock/70">Not orderable online yet — please browse and make your selections in store at Coyote’s, 805 N Main St.</p>
+      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">A Whole Variety</p>
+      <p class="font-body text-night-rock/70">We carry a variety — come browse and pick yours in store at Coyote’s, 805 N Main St.</p>
     </div>
         </section>
         <!-- ======================================== -->
@@ -258,8 +258,8 @@
         <section id="drinks" class="mb-16" data-category="drinks">
             <h2 class="font-heading font-bold text-2xl md:text-3xl text-auburn mb-2">Drinks</h2>
     <div class="bg-cream/60 border border-dashed border-auburn/40 rounded-xl p-8 text-center">
-      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">Coming Soon Online</p>
-      <p class="font-body text-night-rock/70">Not orderable online yet — please browse and make your selections in store at Coyote’s, 805 N Main St.</p>
+      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">A Whole Variety</p>
+      <p class="font-body text-night-rock/70">We carry a variety — come browse and pick yours in store at Coyote’s, 805 N Main St.</p>
     </div>
         </section>
         <!-- ======================================== -->
@@ -302,8 +302,8 @@
             <div>
                 <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-sunset mb-3">Pickup</h3>
                 <ul class="space-y-1 text-sm text-cream/80 font-body">
-                    <li>Grab &amp; Go: daily 7am–3pm</li>
-                    <li>Made-to-order: Thu–Sun 11am–1pm</li>
+                    <li>Grab &amp; Go pickup: 7 days, 6:30am–3pm (inside Coyote's)</li>
+                    <li>Walk-Up Window: made-to-order (<a href="menu.html" class="hover:text-sunset transition">see hours</a>)</li>
                     <li>805 N Main St, Moab, UT 84532</li>
                     <li><a href="tel:+14352636669" class="hover:text-sunset transition">(435) 263-6669</a></li>
                     <li><a href="contact.html" class="hover:text-sunset transition">Contact us</a></li>
@@ -365,8 +365,6 @@
     }catch(e){ return true; } }
     // hours text on footer
     const setByText=(sel,re,val)=>{ if(!val) return; document.querySelectorAll(sel).forEach(el=>{ if(el.children.length===0 && re.test(el.textContent)) el.textContent=val; }); };
-    setByText('li', /Grab\s*&\s*Go:\s*daily/i, S.window_hours_text);
-    setByText('li', /Made-to-order:/i, S.picnic_hours_text);
     // explainer
     const main=document.querySelector('main');
     if(main && !document.getElementById('lb-menu-title')){
