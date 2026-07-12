@@ -132,24 +132,7 @@
             </div>
         </section>
 
-        <!-- WALK-UP WINDOW COUNTDOWN -->
-        <section id="walkup" class="bg-lb-ink text-white px-4 py-8 border-b-4 border-lb-red">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white text-lb-ink rounded-xl p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
-                    <div class="md:flex-1 text-center md:text-left">
-                        <p class="font-heading font-black text-lb-red uppercase tracking-[0.2em] text-xs mb-1">Made-to-Order Walk-Up Window</p>
-                        <p id="wu-status" class="font-heading font-black text-2xl md:text-3xl uppercase tracking-tight leading-none">Checking hours…</p>
-                        <p class="font-body text-sm text-lb-ink/60 mt-2">Thu–Sun · 9 AM – 1 PM · at the window on the patio</p>
-                    </div>
-                    <div class="md:border-l md:border-lb-light md:pl-8">
-                        <p id="wu-label" class="font-heading font-bold uppercase tracking-wide text-[11px] text-lb-ink/50 text-center mb-2">Opens in</p>
-                        <div id="wu-clock" class="flex justify-center gap-2 md:gap-3" aria-live="polite"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PICKUP LOCATION WARNING removed 260710 (John) — superseded by the per-order pickup rule (window-containing orders pick up outside) -->
+        <!-- WALK-UP WINDOW COUNTDOWN moved into The Lunchbox Order menu card 260711 (John) -->
 
         <!-- DELIVERY SOON BANNER -->
         <div class="bg-lb-red text-white text-center py-2 px-4 font-heading font-bold uppercase tracking-wide text-xs md:text-sm">
@@ -199,7 +182,10 @@
                         <li>Grab &amp; go (with order ahead)</li>
                     </ul>
                     <div class="mt-auto pt-6 text-center">
-                        <p class="font-heading font-bold text-xs uppercase tracking-wide text-lb-ink/50 mb-2">Walk-up window · Thu–Sun 9am–1pm</p>
+                        <p id="wu-status" class="font-heading font-black text-xl uppercase tracking-tight leading-none">Checking hours…</p>
+                        <p id="wu-label" class="font-heading font-bold uppercase tracking-wide text-[10px] text-lb-ink/50 mt-1 mb-2">Opens in</p>
+                        <div id="wu-clock" class="flex justify-center gap-2" aria-live="polite"></div>
+                        <p class="font-body text-[11px] text-lb-ink/50 mt-2 mb-4">Thu–Sun · 9 AM – 1 PM · walk-up window on the patio</p>
                         <a href="menu.html?tab=window" class="inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg shadow-md transition">Browse &amp; Order</a>
                     </div>
                 </div>
