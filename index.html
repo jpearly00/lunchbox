@@ -90,12 +90,16 @@
             <ul class="hidden md:flex gap-6 items-center font-heading text-sm font-bold uppercase tracking-wide">
                 <li><a href="/" class="text-lb-red border-b-2 border-lb-red pb-1">Home</a></li>
                 <li><a href="menu.html" class="hover:text-lb-red transition">Menu</a></li>
+                <!-- ARCHIVED 260711 (John): Build a Box + Order nav links — pages archived, key info now shown per menu on the menu page
                 <li><a href="build.html" class="hover:text-lb-red transition">Build a Box</a></li>
                 <li><a href="/orders" class="hover:text-lb-red transition">Order</a></li>
+                -->
                 <li><a href="allergens.html" class="hover:text-lb-red transition">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="hover:text-lb-red transition">Coyote's</a></li>
             </ul>
+<!-- ARCHIVED 260711 (John): header Start Order button — ordering is via the menu page
             <a href="/orders" class="hidden md:inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-5 py-2 rounded-lg shadow transition text-sm">Start Order</a>
+            -->
             <button id="mobile-menu-toggle" class="md:hidden p-2 rounded hover:bg-white/10 transition" aria-label="Toggle menu" aria-expanded="false">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
@@ -104,11 +108,15 @@
             <ul class="flex flex-col gap-1 p-4 font-heading text-sm font-bold uppercase tracking-wide">
                 <li><a href="/" class="block py-2 text-lb-red">Home</a></li>
                 <li><a href="menu.html" class="block py-2 hover:text-lb-red">Menu</a></li>
+                <!-- ARCHIVED 260711 (John): Build a Box + Order (mobile nav)
                 <li><a href="build.html" class="block py-2 hover:text-lb-red">Build a Box</a></li>
                 <li><a href="/orders" class="block py-2 hover:text-lb-red">Order</a></li>
+                -->
                 <li><a href="allergens.html" class="block py-2 hover:text-lb-red">Allergens</a></li>
                 <li><a href="https://moabcoyote.com" class="block py-2 hover:text-lb-red">Coyote's</a></li>
+                <!-- ARCHIVED 260711 (John): Start Order (mobile)
                 <li class="mt-2"><a href="/orders" class="block text-center bg-lb-red text-white font-bold px-6 py-3 rounded-lg">Start Order</a></li>
+                -->
             </ul>
         </div>
     </header>
@@ -147,46 +155,82 @@
             </div>
         </section>
 
-        <!-- TWO MENUS (renamed titles + restored detail bullets; Browse & Order buttons → menu.html?tab=; pickup hours per card) -->
-        <section class="py-16 px-4 max-w-6xl mx-auto">
+        <!-- TWO MENUS — tier-style comparison cards (order style / menu / hours / pickup / good-to-know), pickup+hours folded in, live window countdown in Lunchbox card. 260711 (John) -->
+        <section class="py-16 px-4 max-w-5xl mx-auto">
             <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight text-center mb-2">We Have Two Great Menus</h2>
-            <p class="font-body text-center text-lb-ink/70 mb-10">Two ways to eat, one spot on North Main.</p>
+            <p class="font-body text-center text-lb-ink/70 mb-10">Two ways to eat, one spot on North Main — compare and pick your lane.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
 
-                <!-- Menu 1: Coyote's Picnic Grab & Go (full time) -->
-                <div class="flex flex-col bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
-                    <span class="self-start inline-block bg-lb-ink text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Full Time</span>
-                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">Coyote's Picnic Grab &amp; Go</h3>
-                    <p class="font-heading font-bold text-sm text-lb-ink mb-4">7 Days a Week &middot; 7am–3pm &middot; inside Coyote's</p>
-                    <ul class="space-y-2 font-body text-lb-ink/80">
-                        <li>Fresh house-made sandwiches, burritos, salads &amp; more</li>
-                        <li>Breakfast &amp; lunch quick bites, fresh snacks</li>
-                        <li>Pull from the cooler &amp; warmer &mdash; always ready</li>
-                        <li>Grab &amp; go, or eat on the patio</li>
-                        <li class="text-lb-ink/60 text-sm pt-1">Groups of 5+ encouraged to pre-order</li>
-                    </ul>
-                    <div class="mt-auto pt-6 text-center">
-                        <p class="font-heading font-bold text-xs uppercase tracking-wide text-lb-ink/50 mb-2">Pickup: 7 days, 7am–3pm · inside Coyote's</p>
-                        <a href="menu.html?tab=picnic" class="inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg shadow-md transition">Browse &amp; Order</a>
+                <!-- TIER 1: Coyote's Picnic Grab & Go (full time) -->
+                <div class="flex flex-col bg-white border-4 border-black rounded-2xl overflow-hidden shadow-[6px_6px_0_#000]">
+                    <div class="bg-lb-ink text-white px-6 py-5 text-center">
+                        <span class="inline-block bg-white/15 font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-2">Full Time</span>
+                        <h3 class="font-heading font-black text-2xl uppercase tracking-tight leading-none">Coyote's Picnic Grab &amp; Go</h3>
+                        <p class="font-body text-sm text-white/70 mt-2">Always ready — pull it and go</p>
+                    </div>
+                    <dl class="flex-1">
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Order style</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Grab &amp; go — pull it from the cooler &amp; warmer yourself</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">On the menu</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">House-made sandwiches, burritos, salads, breakfast &amp; snacks</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Hours</dt>
+                            <dd class="flex-1 font-heading font-bold text-sm text-lb-ink">Every day · 6:30 AM – 3 PM</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Pickup</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Inside Coyote's, 805 N Main St</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Good to know</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Groups of 5+ — pre-order ahead</dd>
+                        </div>
+                    </dl>
+                    <div class="mt-auto p-5 border-t border-lb-light">
+                        <a href="menu.html?tab=picnic" class="block text-center w-full bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg shadow-md transition">Browse &amp; Order</a>
                     </div>
                 </div>
 
-                <!-- Menu 2: The Lunchbox Order (part time) -->
-                <div class="flex flex-col bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
-                    <span class="self-start inline-block bg-lb-red text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Part Time</span>
-                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">The Lunchbox Order</h3>
-                    <p class="font-heading font-bold text-sm text-lb-ink mb-4">Most Days — Check our Specials! &middot; beside Coyote's &middot; <a href="https://maps.google.com/?q=The+Lunchbox+805+N+Main+St+Moab+UT+84532" target="_blank" rel="noopener" class="text-lb-red underline">see hours</a></p>
-                    <ul class="space-y-2 font-body text-lb-ink/80">
-                        <li>BBQ &amp; subs, sides, dirty sodas</li>
-                        <li>Order at the window &mdash; made to order</li>
-                        <li>Grab &amp; go (with order ahead)</li>
-                    </ul>
-                    <div class="mt-auto pt-6 text-center">
-                        <p id="wu-status" class="font-heading font-black text-xl uppercase tracking-tight leading-none">Checking hours…</p>
-                        <p id="wu-label" class="font-heading font-bold uppercase tracking-wide text-[10px] text-lb-ink/50 mt-1 mb-2">Opens in</p>
-                        <div id="wu-clock" class="flex justify-center gap-2" aria-live="polite"></div>
-                        <p class="font-body text-[11px] text-lb-ink/50 mt-2 mb-4">Thu–Sun · 9 AM – 1 PM · walk-up window on the patio</p>
-                        <a href="menu.html?tab=window" class="inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg shadow-md transition">Browse &amp; Order</a>
+                <!-- TIER 2: The Lunchbox Order (part time) -->
+                <div class="flex flex-col bg-white border-4 border-black rounded-2xl overflow-hidden shadow-[6px_6px_0_#000]">
+                    <div class="bg-lb-red text-white px-6 py-5 text-center">
+                        <span class="inline-block bg-white/20 font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-2">Part Time</span>
+                        <h3 class="font-heading font-black text-2xl uppercase tracking-tight leading-none">The Lunchbox Order</h3>
+                        <p class="font-body text-sm text-white/80 mt-2">Made to order — check our specials</p>
+                    </div>
+                    <dl class="flex-1">
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Order style</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Made to order, fresh at the walk-up window</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">On the menu</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">BBQ, specialty subs, sides &amp; dirty sodas + daily specials</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Hours</dt>
+                            <dd class="flex-1 font-heading font-bold text-sm text-lb-ink">Thu–Sun · 9 AM – 1 PM</dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Pickup</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Walk-up window on the patio, beside Coyote's · <a href="https://maps.google.com/?q=The+Lunchbox+805+N+Main+St+Moab+UT+84532" target="_blank" rel="noopener" class="text-lb-red font-semibold underline">map</a></dd>
+                        </div>
+                        <div class="flex gap-3 px-5 py-3 border-t border-lb-light">
+                            <dt class="w-24 shrink-0 font-heading font-bold uppercase text-[10px] tracking-widest text-lb-ink/40 pt-1">Good to know</dt>
+                            <dd class="flex-1 font-body text-sm text-lb-ink/90">Order ahead or just walk up</dd>
+                        </div>
+                    </dl>
+                    <div class="mt-auto p-5 border-t border-lb-light">
+                        <div class="bg-lb-ink/5 rounded-lg py-3 mb-3 text-center">
+                            <p id="wu-status" class="font-heading font-black text-lg uppercase tracking-tight leading-none">Checking hours…</p>
+                            <p id="wu-label" class="font-heading font-bold uppercase tracking-wide text-[10px] text-lb-ink/50 mt-1 mb-2">Opens in</p>
+                            <div id="wu-clock" class="flex justify-center gap-2" aria-live="polite"></div>
+                        </div>
+                        <a href="menu.html?tab=window" class="block text-center w-full bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg shadow-md transition">Browse &amp; Order</a>
                     </div>
                 </div>
 
@@ -216,21 +260,9 @@
             </div>
         </section>
 
-        <!-- PICKUP INFO -->
-        <section class="py-16 px-4 max-w-4xl mx-auto text-center">
-            <h2 class="font-heading font-black text-2xl md:text-3xl uppercase tracking-tight mb-4">Pickup Details</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                <div class="bg-white rounded-xl shadow-md p-6 border border-lb-light">
-                    <h3 class="font-heading font-bold text-lg mb-2">Pickup Hours</h3>
-                    <p class="font-body text-lb-ink/70 text-lg">Grab &amp; Go: 6:30 AM – 3 PM daily</p>
-                    <p class="font-body text-sm text-lb-ink/50 mt-1">BBQ, sides, specialty subs, dirty sodas. Made-to-order: Thu–Sun, 9 AM – 1 PM</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 border border-lb-light">
-                    <h3 class="font-heading font-bold text-lg mb-2">Pickup Location</h3>
-                    <p class="font-body text-lb-ink/70 text-lg">Coyote's, 805 N Main St</p>
-                    <p class="font-body text-sm text-lb-ink/50 mt-1">On Main St / Hwy 191, between town and the river & parks, across from Sunset Grill</p>
-                </div>
-            </div>
+        <!-- PICKUP INFO section removed 260711 (John) — was erroneous (window hours under Grab & Go); pickup + hours now folded into the two menu cards above -->
+        <section class="py-10 px-4 max-w-4xl mx-auto text-center">
+            <p class="font-body text-sm text-lb-ink/60">Both menus at <span class="font-semibold text-lb-ink">Coyote's, 805 N Main St</span> — on Main St / Hwy 191, between town and the river &amp; parks, across from Sunset Grill.</p>
         </section>
 
         <!-- ORDER CTA -->
