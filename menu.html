@@ -362,7 +362,9 @@
       const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Denver'}));
       if(!days.includes(now.getDay())) return false;
       const [oh,om]=(S.window_open||'07:00').split(':').map(Number);
-      const [ch,cm]=(S.window_close||'15:00').split(':').map(Number);
+      let cds={}; try{ cds=(typeof S.window_close_days==='string')?JSON.parse(S.window_close_days):(S.window_close_days||{}); }catch(e){ cds={}; }
+      const closeStr=cds[now.getDay()]||S.window_close||'15:00';
+      const [ch,cm]=String(closeStr).split(':').map(Number);
       const m=now.getHours()*60+now.getMinutes(); return m>=(oh*60+om)&&m<(ch*60+cm);
     }catch(e){ return true; } }
     // hours text on footer
