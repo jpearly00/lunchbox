@@ -250,8 +250,8 @@
         <section id="sides" class="mb-16" data-category="sides">
             <h2 class="font-heading font-bold text-2xl md:text-3xl text-auburn mb-2">Snacks &amp; Sides</h2>
     <div class="bg-cream/60 border border-dashed border-auburn/40 rounded-xl p-8 text-center">
-      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">A Whole Variety</p>
-      <p class="font-body text-night-rock/70">We carry a variety — come browse and pick yours in store at Coyote’s, 805 N Main St.</p>
+      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">Coming Soon</p>
+      <p class="font-body text-night-rock/70">Please browse our selection at order pickup.</p>
     </div>
         </section>
         <!-- ======================================== -->
@@ -260,8 +260,8 @@
         <section id="drinks" class="mb-16" data-category="drinks">
             <h2 class="font-heading font-bold text-2xl md:text-3xl text-auburn mb-2">Drinks</h2>
     <div class="bg-cream/60 border border-dashed border-auburn/40 rounded-xl p-8 text-center">
-      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">A Whole Variety</p>
-      <p class="font-body text-night-rock/70">We carry a variety — come browse and pick yours in store at Coyote’s, 805 N Main St.</p>
+      <p class="font-heading font-bold text-lg text-auburn uppercase tracking-wide mb-1">Coming Soon</p>
+      <p class="font-body text-night-rock/70">Please browse our selection at order pickup.</p>
     </div>
         </section>
         <!-- ======================================== -->
@@ -419,7 +419,7 @@
         +priceHtml+'</div>'
         +'<p class="font-body text-sm text-night-rock/70">'+esc(it.description)+'</p>'+varyHtml+b
         +'<div class="mt-2 text-xs text-night-rock/60">'+pickup+pre+'</div>'
-        +'<button type="button" class="lb-add mt-3 inline-flex items-center gap-1 bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide text-xs px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0_#000]" data-add="'+esc(it.id)+'">Add +</button>'
+        +'<button type="button" class="lb-add mt-3 inline-flex items-center gap-1 bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide text-xs px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0_#000]" data-add="'+esc(it.id)+'">'+(((it.category||'')==='sandwich'&&!/rib|plate/i.test(it.title||''))?'Customize + Add':'Add +')+'</button>'
         +'</div></article>';
     }
     function render(){
@@ -450,12 +450,16 @@
     const ORDER_API='https://lunchbox-menu.jpearly.workers.dev/v1/order';
     const fmtM=n=>'$'+(Number(n)||0).toFixed(2);
     let CART=[]; try{ CART=JSON.parse(localStorage.getItem('lb_cart')||'[]')||[]; }catch(e){ CART=[]; }
+    CART=CART.map(l=>Object.assign({}, l, {mods:l.mods||[], key:l.key||(String(l.id)+'|'+((l.mods||[]).join('~')))}));
     function saveCart(){ try{ localStorage.setItem('lb_cart', JSON.stringify(CART)); }catch(e){} updateCartUI(); }
     function itemById(id){ return all.find(x=>String(x.id)===String(id)); }
-    function addToCart(id){ const it=itemById(id); if(!it) return; const line=CART.find(l=>String(l.id)===String(it.id));
-      if(line){ line.qty++; } else CART.push({id:it.id, name:it.title, price:Number(it.price)||0, qty:1, service:(it.service||['picnic'])});
+    function isCustomizable(it){ return !!it && (it.category||'')==='sandwich' && !/rib|plate/i.test(it.title||''); }
+    function lineKey(id,mods){ return String(id)+'|'+((mods||[]).join('~')); }
+    function addLine(it,mods){ mods=mods||[]; const key=lineKey(it.id,mods); const line=CART.find(l=>l.key===key);
+      if(line){ line.qty++; } else CART.push({key:key, id:it.id, name:it.title, price:Number(it.price)||0, qty:1, service:(it.service||['picnic']), mods:mods});
       saveCart(); openCart(); }
-    function setQty(id,d){ const l=CART.find(x=>String(x.id)===String(id)); if(!l) return; l.qty+=d; if(l.qty<=0) CART=CART.filter(x=>String(x.id)!==String(id)); saveCart(); }
+    function addToCart(id){ const it=itemById(id); if(!it) return; if(isCustomizable(it)) openMods(it); else addLine(it,[]); }
+    function setQty(key,d){ const l=CART.find(x=>x.key===key); if(!l) return; l.qty+=d; if(l.qty<=0) CART=CART.filter(x=>x.key!==key); saveCart(); }
     const cartCount=()=>CART.reduce((s,l)=>s+l.qty,0);
     const cartTotal=()=>CART.reduce((s,l)=>s+l.price*l.qty,0);
     const cartHasWindow=()=>CART.some(l=>(Array.isArray(l.service)?l.service:[l.service]).includes('window'));
@@ -478,6 +482,38 @@
       fab.classList.toggle('hidden', c===0); fab.classList.toggle('flex', c>0);
       if(!draw.classList.contains('hidden')) renderCart(); }
 
+    // customize modal (sandwiches only)
+    const modBack=document.createElement('div'); modBack.className='fixed inset-0 z-[70] hidden items-center justify-center bg-black/50 p-4';
+    const modPanel=document.createElement('div'); modPanel.className='bg-clean-white rounded-xl border-4 border-black shadow-[6px_6px_0_#000] w-full max-w-sm max-h-[90vh] overflow-y-auto';
+    modBack.appendChild(modPanel); document.body.appendChild(modBack);
+    function closeMods(){ modBack.classList.add('hidden'); modBack.classList.remove('flex'); }
+    modBack.addEventListener('click',e=>{ if(e.target===modBack) closeMods(); });
+    function optRow(label,inner){ return '<div><span class="font-heading font-bold text-xs uppercase tracking-wide text-night-rock/60">'+label+'</span>'+inner+'</div>'; }
+    function openMods(it){
+      const cheeses=['Default','Mild Cheddar','Swiss','Provolone','No cheese'];
+      modPanel.innerHTML='<div class="flex items-center justify-between p-4 border-b-2 border-black"><h3 class="font-heading font-black text-lg uppercase">Customize</h3><button id="mod-x" class="text-2xl font-bold px-2">&times;</button></div>'
+        +'<div class="p-4 space-y-4"><p class="font-heading font-bold">'+esc(it.title)+'</p>'
+        +optRow('Cheese','<div class="mt-1 grid grid-cols-2 gap-2">'+cheeses.map((c,i)=>'<label class="block"><input type="radio" name="mod-cheese" value="'+c+'" '+(i===0?'checked':'')+' class="peer sr-only"><span class="block text-center text-sm border-2 border-black rounded-lg py-1.5 peer-checked:bg-lb-red peer-checked:text-clean-white cursor-pointer">'+c+'</span></label>').join('')+'</div>')
+        +optRow('Bread','<label class="mt-1 flex items-center gap-2"><input type="checkbox" id="mod-sour" class="w-4 h-4"><span class="text-sm">Dairy-free sliced sourdough loaf</span></label>')
+        +optRow('Remove','<div class="mt-1 flex flex-wrap gap-x-4 gap-y-1"><label class="flex items-center gap-2"><input type="checkbox" id="mod-nolet" class="w-4 h-4"><span class="text-sm">No lettuce</span></label><label class="flex items-center gap-2"><input type="checkbox" id="mod-notom" class="w-4 h-4"><span class="text-sm">No tomato</span></label></div>')
+        +optRow('Condiments','<div class="mt-1 flex flex-wrap gap-x-4 gap-y-1"><label class="flex items-center gap-2"><input type="checkbox" id="mod-nomayo" class="w-4 h-4"><span class="text-sm">No mayo</span></label><label class="flex items-center gap-2"><input type="checkbox" id="mod-addmayo" class="w-4 h-4"><span class="text-sm">Add mayo</span></label><label class="flex items-center gap-2"><input type="checkbox" id="mod-nomus" class="w-4 h-4"><span class="text-sm">No mustard</span></label><label class="flex items-center gap-2"><input type="checkbox" id="mod-addmus" class="w-4 h-4"><span class="text-sm">Add mustard</span></label></div>')
+        +'</div><div class="p-4 border-t-2 border-black"><button id="mod-add" class="w-full bg-lb-red text-clean-white font-heading font-black uppercase tracking-wide py-3 rounded-lg border-2 border-black shadow-[3px_3px_0_#000]">Add to Cart</button></div>';
+      modBack.classList.remove('hidden'); modBack.classList.add('flex');
+      modPanel.querySelector('#mod-x').onclick=closeMods;
+      modPanel.querySelector('#mod-add').onclick=function(){
+        var mods=[]; var ch=modPanel.querySelector('input[name=mod-cheese]:checked').value;
+        if(ch!=='Default') mods.push(ch==='No cheese'?'No cheese':(ch+' cheese'));
+        if(modPanel.querySelector('#mod-sour').checked) mods.push('Dairy-free sourdough');
+        if(modPanel.querySelector('#mod-nolet').checked) mods.push('No lettuce');
+        if(modPanel.querySelector('#mod-notom').checked) mods.push('No tomato');
+        if(modPanel.querySelector('#mod-nomayo').checked) mods.push('No mayo');
+        if(modPanel.querySelector('#mod-addmayo').checked) mods.push('Add mayo');
+        if(modPanel.querySelector('#mod-nomus').checked) mods.push('No mustard');
+        if(modPanel.querySelector('#mod-addmus').checked) mods.push('Add mustard');
+        closeMods(); addLine(it, mods);
+      };
+    }
+
     function renderCart(){
       draw.innerHTML='<div class="flex items-center justify-between p-4 border-b-2 border-black"><h2 class="font-heading font-black text-xl uppercase">Your Order</h2><button id="cart-x" class="text-2xl font-bold px-2">&times;</button></div>'
         +'<div id="cart-body" class="flex-1 overflow-y-auto p-4 space-y-3"></div>'
@@ -485,7 +521,7 @@
         +'<p class="font-body text-xs text-night-rock/60">'+pickupText()+'</p>'
         +'<button id="cart-checkout" class="w-full bg-lb-red text-clean-white font-heading font-black uppercase tracking-wide py-3 rounded-lg border-2 border-black shadow-[3px_3px_0_#000] disabled:opacity-40" '+(CART.length?'':'disabled')+'>Checkout</button></div>';
       const body=draw.querySelector('#cart-body');
-      body.innerHTML=CART.length?CART.map(l=>'<div class="flex items-center gap-3 border-b border-black/10 pb-3"><div class="flex-1"><p class="font-heading font-bold text-sm">'+esc(l.name)+'</p><p class="text-xs text-night-rock/60">'+fmtM(l.price)+' &middot; '+svcTag(l)+'</p></div><div class="flex items-center gap-2"><button class="cart-dec w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.id)+'">&minus;</button><span class="w-6 text-center font-bold">'+l.qty+'</span><button class="cart-inc w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.id)+'">+</button></div></div>').join(''):'<p class="font-body text-night-rock/60 text-center py-10">Your cart is empty. Add something tasty!</p>';
+      body.innerHTML=CART.length?CART.map(l=>'<div class="flex items-start gap-3 border-b border-black/10 pb-3"><div class="flex-1"><p class="font-heading font-bold text-sm">'+esc(l.name)+'</p><p class="text-xs text-night-rock/60">'+fmtM(l.price)+' &middot; '+svcTag(l)+'</p>'+((l.mods&&l.mods.length)?'<p class="text-xs text-auburn mt-0.5">'+esc(l.mods.join(', '))+'</p>':'')+'</div><div class="flex items-center gap-2"><button class="cart-dec w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">&minus;</button><span class="w-6 text-center font-bold">'+l.qty+'</span><button class="cart-inc w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">+</button></div></div>').join(''):'<p class="font-body text-night-rock/60 text-center py-10">Your cart is empty. Add something tasty!</p>';
       draw.querySelector('#cart-x').onclick=closeCart;
       draw.querySelectorAll('.cart-inc').forEach(b=>b.onclick=()=>setQty(b.dataset.id,1));
       draw.querySelectorAll('.cart-dec').forEach(b=>b.onclick=()=>setQty(b.dataset.id,-1));
