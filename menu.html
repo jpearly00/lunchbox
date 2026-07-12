@@ -356,7 +356,7 @@
     const h2=sec.querySelector('h2'), desc=sec.querySelector('p');
     const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const badge=(t,cls)=>`<span class="inline-block mt-2 mr-1 text-xs font-semibold ${cls} px-2 py-0.5 rounded-full">${t}</span>`;
-    const poOn=String(S.preorder_enabled||'0')==='1';
+    const poOnFor=(t)=>String((t==='picnic'?(S.m1_preorder_enabled!=null?S.m1_preorder_enabled:S.preorder_enabled):(S.m2_preorder_enabled!=null?S.m2_preorder_enabled:S.preorder_enabled))||'0')==='1';
     function windowOpen(){ try{
       const days=Array.isArray(S.window_days)?S.window_days:[0,1,2,3,4,5,6];
       const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Denver'}));
@@ -411,7 +411,7 @@
       const vary=(it.variations||[]);
       const varyHtml=vary.length?'<p class="mt-1 text-xs text-night-rock/60"><b>Flavors:</b> '+esc(vary.slice(0,5).join(', '))+(vary.length>5?(' + '+(vary.length-5)+' more'):'')+'</p>':'';
       const pickup=TAB==='window'?'Window: at the Lunchbox window':"Picnic: grab &amp; go at Coyote's";
-      const pre=(poOn&&it.preorderable)?' &middot; <span class="font-semibold text-lb-go">Pre-order ok</span>':'';
+      const pre=(poOnFor(TAB)&&it.preorderable)?' &middot; <span class="font-semibold text-lb-go">Pre-order ok</span>':'';
       return '<article class="bg-clean-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row" data-item-id="'+esc(it.id)+'" data-category="'+esc(it.category||'')+'" data-price="'+priceN.toFixed(2)+'" data-name="'+esc(it.title)+'">'
         +(img?('<img src="'+esc(img)+'" alt="'+esc(it.title)+'" class="w-full sm:w-40 h-40 sm:h-auto object-cover" loading="lazy" width="160" height="160">'):('<div class="w-full sm:w-40 h-40 flex-shrink-0 flex items-center justify-center bg-lb-ink text-clean-white p-2 text-center"><span class="font-heading font-bold uppercase text-xs tracking-wide leading-tight">'+esc(it.title)+'<br><span class="text-lb-red">Photo coming soon</span></span></div>'))
         +'<div class="p-4 flex-1"><div class="flex justify-between items-start mb-1">'
