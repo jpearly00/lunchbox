@@ -124,9 +124,9 @@
                     <p class="font-heading font-black text-lb-red uppercase tracking-[0.25em] text-xs md:text-sm mb-3">Good Eats · Grab · Go · Repeat</p>
                     <h1 class="font-heading font-black text-4xl md:text-6xl text-white uppercase leading-[0.95] tracking-tight mb-4">Pre-order.<br>Pick your time.<br><span class="text-lb-red">Grab &amp; go.</span></h1>
                     <p class="font-body text-lg md:text-xl text-white/85 max-w-lg mb-6">Sandwiches, burritos, and build-your-own lunchboxes, packed for the trail. Order the night before, pick a pickup time, and roll.</p>
-                    <div class="flex flex-col sm:flex-row gap-3">
+                    <div id="hero-ctas" class="hidden flex-col sm:flex-row gap-3" data-requires-setting="home_hero_ctas" data-show-class="flex">
                         <a href="/orders" class="inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition text-sm md:text-base text-center">Start an Order</a>
-                        <a href="build.html" class="inline-block bg-white/10 hover:bg-white/20 border border-white/30 text-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg transition text-sm md:text-base text-center">Build Your Own Box</a>
+                        <a href="#buildbox" class="inline-block bg-white/10 hover:bg-white/20 border border-white/30 text-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg transition text-sm md:text-base text-center">Build Your Own Box</a>
                     </div>
                 </div>
             </div>
@@ -160,61 +160,45 @@
         <section class="py-6 px-4 bg-white border-b border-lb-light">
             <div class="max-w-6xl mx-auto flex items-center justify-center gap-3 text-center">
                 <img src="images/logo.jpg" alt="Coyote's logo" class="h-8 w-auto rounded" width="1024" height="1008">
-                <p class="font-body text-sm text-lb-ink/70">Find The Lunchbox directly beside <a href="https://moabcoyote.com" class="text-lb-red font-semibold hover:underline">Coyote's</a> at 805 N Main St, Moab.</p>
+                <p class="font-body text-sm text-lb-ink/70">Find The Lunchbox directly beside <a href="https://moabcoyote.com" class="text-lb-red font-semibold hover:underline">Coyote's</a> at 805 N Main St, Moab.<br><span class="text-lb-ink/50">Across from Sunset Grill and Hyatt car chargers, next to the Tortilla Truck.</span></p>
             </div>
         </section>
 
-        <!-- TWO MENUS -->
+        <!-- TWO MENUS (Browse & Order buttons → menu.html?tab=; pickup hours per card) -->
         <section class="py-16 px-4 max-w-6xl mx-auto">
-            <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight text-center mb-2">1 Full-Time &amp; 1 Part-Time Menu</h2>
-            <p class="font-body text-center text-lb-ink/70 mb-10">Two ways to eat, one spot on North Main.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight text-center mb-2">We Have Two Great Menus</h2>
+            <p class="font-body text-center text-lb-ink/70 mb-10">Tap a menu to open it and order.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
 
-                <!-- Picnic Menu (full time) -->
-                <div class="bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
-                    <span class="inline-block bg-lb-ink text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Full Time</span>
-                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">Picnic Menu</h3>
-                    <p class="font-heading font-bold text-sm text-lb-ink mb-4">7 days/wk &middot; inside Coyote's</p>
-                    <ul class="space-y-2 font-body text-lb-ink/80">
-                        <li>Breakfast &amp; lunch quick bites, fresh snacks</li>
-                        <li>Pull from the cooler &amp; warmer &mdash; always ready</li>
-                        <li>Grab &amp; go, or eat on the patio</li>
-                        <li class="text-lb-ink/60 text-sm pt-1">Groups of 5+ encouraged to pre-order</li>
-                    </ul>
+                <!-- Menu 1: Coyote's Picnic Grab & Go -->
+                <div class="flex flex-col bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
+                    <span class="self-start inline-block bg-lb-ink text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Full Time</span>
+                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">Coyote's Picnic Grab &amp; Go</h3>
+                    <p class="font-heading font-bold text-sm text-lb-ink mb-3">7 Days a Week &middot; 7am–3pm</p>
+                    <p class="font-body text-lb-ink/80">Fresh house-made sandwiches, burritos, salads &amp; more — ready in the cooler and warmer inside our shop.</p>
+                    <div class="mt-auto pt-6 text-center">
+                        <p class="font-heading font-bold text-xs uppercase tracking-wide text-lb-ink/50 mb-2">Pickup: 7 days, 7am–3pm · inside Coyote's</p>
+                        <a href="menu.html?tab=picnic" class="inline-block bg-lb-red text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg">Browse &amp; Order</a>
+                    </div>
                 </div>
 
-                <!-- The Lunchbox Menu (part time) -->
-                <div class="bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
-                    <span class="inline-block bg-lb-red text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Part Time</span>
-                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">The Lunchbox Menu</h3>
-                    <p class="font-heading font-bold text-sm text-lb-ink mb-4">Most days &middot; beside Coyote's &middot; <a href="menu.html" class="text-lb-red underline">see hours</a></p>
-                    <ul class="space-y-2 font-body text-lb-ink/80">
-                        <li>BBQ &amp; subs, sides, dirty sodas</li>
-                        <li>Order at the window &mdash; made to order</li>
-                        <li>Grab &amp; go (with order ahead)</li>
-                    </ul>
+                <!-- Menu 2: The Lunchbox Order -->
+                <div class="flex flex-col bg-white border-4 border-black rounded-xl p-6 shadow-[6px_6px_0_#000]">
+                    <span class="self-start inline-block bg-lb-red text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full mb-3">Part Time</span>
+                    <h3 class="font-heading font-black text-2xl uppercase tracking-tight text-lb-red leading-none">The Lunchbox Order</h3>
+                    <p class="font-heading font-bold text-sm text-lb-ink mb-3">Most Days — Check our Specials!</p>
+                    <p class="font-body text-lb-ink/80">Made-to-order at the walk-up window, right next to Coyote's. <a href="https://maps.google.com/?q=The+Lunchbox+805+N+Main+St+Moab+UT+84532" target="_blank" rel="noopener" class="text-lb-red font-semibold underline">See hours (Google Maps)</a>.</p>
+                    <div class="mt-auto pt-6 text-center">
+                        <p class="font-heading font-bold text-xs uppercase tracking-wide text-lb-ink/50 mb-2">Walk-up window · Thu–Sun 9am–1pm</p>
+                        <a href="menu.html?tab=window" class="inline-block bg-lb-red text-white font-heading font-bold uppercase tracking-wide px-8 py-3 rounded-lg">Browse &amp; Order</a>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- BUILD-YOUR-OWN FEATURE -->
-        <section class="py-16 px-4 bg-lb-ink text-white">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div>
-                    <p class="font-heading font-black text-lb-red uppercase tracking-[0.2em] text-xs mb-3">New</p>
-                    <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight mb-4">Build Your Own Lunchbox</h2>
-                    <p class="font-body text-white/80 mb-6">Pick one from each compartment and watch your box fill up in real time. Entrée, side, snack, drink, dessert, your call. Bundle and save.</p>
-                    <a href="build.html" class="inline-block bg-lb-red hover:bg-lb-red-dark text-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition text-sm">Build a Box →</a>
-                </div>
-                <a href="build.html" class="block rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 hover:ring-lb-red transition">
-                    <img src="images/collage.jpg" alt="Build your own lunchbox" class="w-full h-64 md:h-80 object-cover" loading="lazy" width="1800" height="1385">
-                </a>
-            </div>
-        </section>
-
-        <!-- MENU PREVIEW -->
-        <section class="py-16 px-4">
+        <!-- MENU PREVIEW ("What's on the Menu") — ARCHIVED 260711: hidden by default, re-enable via MGR setting home_menu_preview -->
+        <section id="home-menu-preview" class="py-16 px-4 hidden" data-requires-setting="home_menu_preview">
             <div class="max-w-6xl mx-auto">
                 <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight text-center mb-3">What's on the Menu</h2>
                 <p class="font-body text-center text-lb-ink/70 max-w-2xl mx-auto mb-12">Made fresh. Packed to travel. Built for the trail.</p>
@@ -261,6 +245,22 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="/orders" class="inline-flex items-center justify-center gap-2 bg-white text-lb-red font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition text-base hover:bg-lb-cream">Order Online</a>
                     <a href="menu.html" class="inline-flex items-center justify-center gap-2 bg-lb-ink hover:bg-black text-white font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg shadow-lg transition text-base">See the Menu</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUILD-YOUR-OWN FEATURE — moved above footer + set to Coming Soon 260711 (feature not built yet) -->
+        <section id="buildbox" class="hidden py-16 px-4 bg-lb-ink text-white border-t-4 border-lb-red" data-requires-setting="home_buildbox">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <p class="font-heading font-black text-lb-red uppercase tracking-[0.2em] text-xs mb-3">Coming Soon</p>
+                    <h2 class="font-heading font-black text-3xl md:text-4xl uppercase tracking-tight mb-4">Build Your Own Lunchbox</h2>
+                    <p class="font-body text-white/80 mb-6">Pick one from each compartment and watch your box fill up in real time. Entrée, side, snack, drink, dessert, your call. Bundle and save. We're building this feature now — check back soon.</p>
+                    <span class="inline-block bg-white/10 border border-white/25 text-white/70 font-heading font-bold uppercase tracking-wide px-8 py-4 rounded-lg text-sm cursor-default select-none">Coming Soon</span>
+                </div>
+                <div class="relative block rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+                    <img src="images/collage.jpg" alt="Build your own lunchbox (coming soon)" class="w-full h-64 md:h-80 object-cover opacity-70" loading="lazy" width="1800" height="1385">
+                    <span class="absolute top-3 left-3 bg-lb-red text-white font-heading font-bold uppercase tracking-widest text-[11px] px-3 py-1 rounded-full">Coming Soon</span>
                 </div>
             </div>
         </section>
@@ -355,6 +355,21 @@
             clockEl.innerHTML=html;
         }
         tick(); setInterval(tick,1000);
+    })();
+    </script>
+
+    <!-- Home: reveal archived sections only if their /mgr setting is on (default off): home_menu_preview, home_buildbox, home_hero_ctas -->
+    <script>
+    (async function(){
+      try{
+        const res=await fetch('https://lunchbox-menu.jpearly.workers.dev/v1/menu.json',{cache:'no-store'});
+        if(!res.ok) return;
+        const S=(await res.json()).settings||{};
+        document.querySelectorAll('[data-requires-setting]').forEach(function(el){
+          var key=el.getAttribute('data-requires-setting');
+          if(String(S[key]||'0')==='1'){ el.classList.remove('hidden'); var sc=el.getAttribute('data-show-class'); if(sc) sc.split(' ').forEach(function(c){ if(c) el.classList.add(c); }); }
+        });
+      }catch(e){}
     })();
     </script>
 <!-- consent banner (self-hosted, EU-only, free) -->

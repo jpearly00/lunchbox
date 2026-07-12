@@ -153,12 +153,8 @@
         <!-- Page header removed 260710 (John) — the "Two menus to order from" title is injected above the tabs -->
         <h1 class="sr-only">The Lunchbox Menu</h1>
 
-        <!-- Quick Nav (jump links) -->
-        <nav class="flex flex-wrap justify-center gap-2 mb-12" aria-label="Menu categories">
-            <a href="#sandwiches" class="bg-cream hover:bg-auburn hover:text-clean-white text-night-rock font-heading font-semibold text-xs uppercase tracking-wide px-4 py-2 rounded-full transition">Sandwiches</a>
-            <a href="#sides" class="bg-cream hover:bg-auburn hover:text-clean-white text-night-rock font-heading font-semibold text-xs uppercase tracking-wide px-4 py-2 rounded-full transition">Sides &amp; Snacks</a>
-            <a href="#drinks" class="bg-cream hover:bg-auburn hover:text-clean-white text-night-rock font-heading font-semibold text-xs uppercase tracking-wide px-4 py-2 rounded-full transition">Drinks</a>
-        </nav>
+        <!-- Quick Nav pills removed 260711 (John) -->
+
         <!-- ======================================== -->
         <!-- SANDWICHES                               -->
         <!-- ======================================== -->
@@ -392,7 +388,9 @@
     }
     lbImg=document.getElementById('lb-img'); lbCap=document.getElementById('lb-cap');
     // tabs
-    let TAB='picnic', pillEl=null, GAL=[], galI=0;
+    let TAB=(new URLSearchParams(location.search).get('tab')==='window'?'window':'picnic'), pillEl=null, GAL=[], galI=0;
+    // Preselect tab from ?tab= (or #hash) so home-page Menu 1 / Menu 2 cards land on the right menu. 260711
+    try{ const qp=new URLSearchParams(location.search); const t=(qp.get('tab')||location.hash.replace('#','')||'').toLowerCase(); if(t==='window'||t==='picnic') TAB=t; }catch(e){}
     // Per-tab intro copy — the two ordering methods live at the top of their own file-folder tab.
     const TABMETA={
       picnic:{ n:'Menu 1', label:'Grab &amp; Go', h:'Everyday Grab &amp; Go / Picnic Quick Bites', body:'Ready-made quick bites available 7 days a week inside Coyote\'s Outpost. Groups encouraged to pre-order, choose your pickup time and we have it ready and labeled in the cooler.' },
@@ -405,9 +403,6 @@
       b.innerHTML='<span class="block text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.2em] opacity-70">'+m.n+'&nbsp;&mdash;</span><span class="block font-heading font-black uppercase tracking-tight text-base md:text-xl leading-none">'+m.label+'</span>'; return b; }
     const bP=mk('picnic'), bW=mk('window');
     strip.appendChild(bP); strip.appendChild(bW);
-    const orderBtn=document.createElement('a'); orderBtn.href='/orders'; orderBtn.textContent='Order Ahead →';
-    orderBtn.className='ml-auto self-center bg-lb-red text-clean-white font-heading font-bold uppercase tracking-wide text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 rounded-lg border-2 border-black shadow-[3px_3px_0_#000] hover:bg-lb-red-dark whitespace-nowrap';
-    strip.appendChild(orderBtn);
     sec.insertBefore(strip, h2); sec.insertBefore(panel, h2);
     panel.appendChild(h2); panel.appendChild(desc); panel.appendChild(grid);
     function card(it){
