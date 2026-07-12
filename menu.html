@@ -389,7 +389,7 @@
       picnic:{ n:'Menu 1', label:'Grab &amp; Go', h:'Everyday Grab &amp; Go / Picnic Quick Bites', body:'Ready-made quick bites available 7 days a week inside Coyote\'s Outpost. Groups encouraged to pre-order, choose your pickup time and we have it ready and labeled in the cooler.',
         ki:[['Order style','Grab &amp; go — pull it yourself'],['Hours','Every day · 6:30 AM – 3 PM'],['Pickup','Inside Coyote\'s, 805 N Main St'],['Good to know','Groups of 5+ — pre-order ahead']] },
       window:{ n:'Menu 2', label:'Walk Up Window', h:'Made-to-Order Walk-Up Window', body:'BBQ &amp; Specialty Subs, Sides, &amp; Drinks. Special hours, several days a week &middot; Order ahead online for Grab &amp; Go, or we make it to order for you @ the walk-up window.',
-        ki:[['Order style','Made to order at the walk-up window'],['Hours','Thu–Sun · 9 AM – 1 PM'],['Pickup','Walk-up window on the patio, beside Coyote\'s'],['Good to know','Order ahead or just walk up']] }
+        ki:[['Order style','Made to order at the walk-up window'],['Hours','Thu–Sun · 9 AM – 1 PM'],['Pickup','Walk-up window and patio, beside Coyote\'s'],['Good to know','Order ahead or just walk up']] }
     };
     // File-folder tabs: a tab strip sitting on top of a bordered panel; active tab merges into the panel.
     const strip=document.createElement('div'); strip.className='flex gap-2 items-end';
@@ -419,7 +419,7 @@
         +priceHtml+'</div>'
         +'<p class="font-body text-sm text-night-rock/70">'+esc(it.description)+'</p>'+varyHtml+b
         +'<div class="mt-2 text-xs text-night-rock/60">'+pickup+pre+'</div>'
-        +'<button type="button" class="lb-add mt-3 inline-flex items-center gap-1 bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide text-xs px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0_#000]" data-add="'+esc(it.id)+'">'+(((it.category||'')==='sandwich'&&!/rib|plate/i.test(it.title||''))?'Customize + Add':'Add +')+'</button>'
+        +'<div class="mt-3 flex items-center gap-3"><button type="button" class="lb-add inline-flex items-center gap-1 bg-lb-red hover:bg-lb-red-dark text-clean-white font-heading font-bold uppercase tracking-wide text-xs px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0_#000]" data-add="'+esc(it.id)+'">Add +</button>'+(((it.category||'')==='sandwich'&&!/rib|plate/i.test(it.title||''))?'<button type="button" class="lb-cust text-xs text-night-rock/55 underline hover:text-lb-red" data-cust="'+esc(it.id)+'">Customize</button>':'')+'</div>'
         +'</div></article>';
     }
     function render(){
@@ -458,7 +458,7 @@
     function addLine(it,mods){ mods=mods||[]; const key=lineKey(it.id,mods); const line=CART.find(l=>l.key===key);
       if(line){ line.qty++; } else CART.push({key:key, id:it.id, name:it.title, price:Number(it.price)||0, qty:1, service:(it.service||['picnic']), mods:mods});
       saveCart(); openCart(); }
-    function addToCart(id){ const it=itemById(id); if(!it) return; if(isCustomizable(it)) openMods(it); else addLine(it,[]); }
+    function addToCart(id){ const it=itemById(id); if(!it) return; addLine(it,[]); }
     function setQty(key,d){ const l=CART.find(x=>x.key===key); if(!l) return; l.qty+=d; if(l.qty<=0) CART=CART.filter(x=>x.key!==key); saveCart(); }
     const cartCount=()=>CART.reduce((s,l)=>s+l.qty,0);
     const cartTotal=()=>CART.reduce((s,l)=>s+l.price*l.qty,0);
@@ -521,10 +521,11 @@
         +'<p class="font-body text-xs text-night-rock/60">'+pickupText()+'</p>'
         +'<button id="cart-checkout" class="w-full bg-lb-red text-clean-white font-heading font-black uppercase tracking-wide py-3 rounded-lg border-2 border-black shadow-[3px_3px_0_#000] disabled:opacity-40" '+(CART.length?'':'disabled')+'>Checkout</button></div>';
       const body=draw.querySelector('#cart-body');
-      body.innerHTML=CART.length?CART.map(l=>'<div class="flex items-start gap-3 border-b border-black/10 pb-3"><div class="flex-1"><p class="font-heading font-bold text-sm">'+esc(l.name)+'</p><p class="text-xs text-night-rock/60">'+fmtM(l.price)+' &middot; '+svcTag(l)+'</p>'+((l.mods&&l.mods.length)?'<p class="text-xs text-auburn mt-0.5">'+esc(l.mods.join(', '))+'</p>':'')+'</div><div class="flex items-center gap-2"><button class="cart-dec w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">&minus;</button><span class="w-6 text-center font-bold">'+l.qty+'</span><button class="cart-inc w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">+</button></div></div>').join(''):'<p class="font-body text-night-rock/60 text-center py-10">Your cart is empty. Add something tasty!</p>';
+      body.innerHTML=CART.length?CART.map(l=>'<div class="border-b border-black/10 pb-3"><div class="flex items-start gap-3"><div class="flex-1"><p class="font-heading font-bold text-sm">'+esc(l.name)+'</p><p class="text-xs text-night-rock/60">'+fmtM(l.price)+' &middot; '+svcTag(l)+'</p>'+((l.mods&&l.mods.length)?'<p class="text-xs text-auburn mt-0.5">'+esc(l.mods.join(', '))+'</p>':'')+'</div><div class="flex items-center gap-2"><button class="cart-dec w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">&minus;</button><span class="w-6 text-center font-bold">'+l.qty+'</span><button class="cart-inc w-7 h-7 rounded border-2 border-black font-bold" data-id="'+esc(l.key)+'">+</button></div></div><input type="text" class="lb-person mt-2 w-full text-xs border border-black/20 rounded px-2 py-1.5" placeholder="Add person name (who is this for?)" value="'+esc(l.person||'')+'" data-key="'+esc(l.key)+'"></div>').join(''):'<p class="font-body text-night-rock/60 text-center py-10">Your cart is empty. Add something tasty!</p>';
       draw.querySelector('#cart-x').onclick=closeCart;
       draw.querySelectorAll('.cart-inc').forEach(b=>b.onclick=()=>setQty(b.dataset.id,1));
       draw.querySelectorAll('.cart-dec').forEach(b=>b.onclick=()=>setQty(b.dataset.id,-1));
+      draw.querySelectorAll('.lb-person').forEach(inp=>inp.onchange=function(){ var l=CART.find(x=>x.key===inp.dataset.key); if(l){ l.person=inp.value.trim(); saveCart(); } });
       const co=draw.querySelector('#cart-checkout'); if(co&&CART.length) co.onclick=renderCheckout;
     }
 
@@ -573,7 +574,9 @@
       }catch(e){ err.textContent='Sorry, could not place the order. Please try again.'; err.classList.remove('hidden'); btn.disabled=false; btn.textContent='Place Order'; }
     }
 
-    document.addEventListener('click', function(e){ var b=e.target.closest&&e.target.closest('.lb-add'); if(b){ e.preventDefault(); addToCart(b.dataset.add); } });
+    document.addEventListener('click', function(e){ if(!e.target.closest) return;
+      var a=e.target.closest('.lb-add'); if(a){ e.preventDefault(); addToCart(a.dataset.add); return; }
+      var c=e.target.closest('.lb-cust'); if(c){ e.preventDefault(); var it=itemById(c.dataset.cust); if(it) openMods(it); } });
     updateCartUI();
 
     render();
